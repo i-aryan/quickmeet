@@ -112,6 +112,9 @@ navbar .logo {
   outline: none;
   border-radius: 0;
 }
+.main .create-join .roomcode-error {
+  border-bottom: 3px solid #d31c1c;
+}
 .main .create-join .joinroom {
   margin-top: 20px;
   width: 100%;
@@ -141,8 +144,7 @@ navbar .logo {
   margin-top: 10px;
   width: 100px;
 }
-.main .video-cont .settings .mic,
-.main .video-cont .settings .webcam {
+.main .video-cont .settings .device {
   background-color: #4ecca3;
   border-radius: 100px;
   padding: 10px;
@@ -151,8 +153,19 @@ navbar .logo {
   margin-right: 10px;
   color: white;
 }
-.main .video-cont .settings .mic:hover,
-.main .video-cont .settings .webcam:hover {
+.main .video-cont .settings .device:hover {
+  background-color: #393e46;
+}
+.main .video-cont .settings .nodevice {
+  background-color: #b12c2c;
+  border-radius: 100px;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  color: white;
+}
+.main .video-cont .settings .nodevice:hover {
   background-color: #393e46;
 }
 
