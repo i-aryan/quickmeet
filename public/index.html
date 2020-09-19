@@ -7,6 +7,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/6510466b6c.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -24,11 +26,15 @@
                 <div class="subtext">No sign ups required. Open Source platform.</div>
                 </div>
                 <button id="createroom" class="createroom-butt unselectable">Create Room</button><br>
-                <input type="text" name="room" placeholder="Enter Room Code" id="room" class="roomcode"><br>
+                <input type="text" name="room" spellcheck="false" placeholder="Enter Room Code" id="room" class="roomcode"><br>
                 <div class="joinroom unselectable" id="joinroom">Join Room</div>
             </div>
             <div class="video-cont">
                 <video class="video-self" autoplay muted playsinline></video>
+                <div class="settings">
+                    <div class="mic"><i class="fas fa-microphone"></i></div>
+                    <div class="webcam"><i class="fas fa-video"></i></div>
+                </div>
             </div>
         </div>
 

@@ -126,6 +126,7 @@ navbar .logo {
 }
 .main .video-cont {
   width: 100%;
+  text-align: center;
 }
 .main .video-cont .video-self {
   height: 400px;
@@ -133,6 +134,26 @@ navbar .logo {
   background-color: #393e46;
   border-radius: 10px;
   object-fit: cover;
+}
+.main .video-cont .settings {
+  margin: 0 auto;
+  display: flex;
+  margin-top: 10px;
+  width: 100px;
+}
+.main .video-cont .settings .mic,
+.main .video-cont .settings .webcam {
+  background-color: #4ecca3;
+  border-radius: 100px;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  color: white;
+}
+.main .video-cont .settings .mic:hover,
+.main .video-cont .settings .webcam:hover {
+  background-color: #393e46;
 }
 
 @media (max-width: 1200px) {
