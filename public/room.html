@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>QuickMeet Room</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        const params = new URLSearchParams(location.search);
+        if (!params.get("name")) location.href = "/";
+        if (!params.get("room")) location.href = "/";
+    </script>
+</head>
+
+<body>
+    <div class="container-room">
+        <div class="left-cont">
+
+            <div class="video-cont-single" id="vcont">
+                <video class="video-dummy" id="vd1" autoplay playsinline>
+                </video>
+                <!-- <video class="video-dummy" id="vd2" autoplay playsinline>
+                </video>
+                <video class="video-dummy" id="vd3" autoplay playsinline>
+                </video>
+                <video class="video-dummy" id="vd4" autoplay playsinline>
+                </video> -->
+            </div>
+
+            <div class="utils">
+                <div class="audio">
+                    Audio
+                </div>
+                <div class="novideo">
+                    Video
+                </div>
+            </div>
+        </div>
+        <div class="right-cont">
+            <div class="head-title">
+                <div class="h-title">
+                    ChatRoom
+                </div>   
+                <!--<div class="chatroom-id">
+                    ID
+                </div>-->
+            </div>
+            
+            <div class="chat-cont">
+               <!--<div class="message">
+                    <div class="info">
+                        <div class="username">Bot</div>
+                        <div class="time">12:00pm</div>
+                    </div>
+                    <div class="content">
+                        Oryon has joined the chat!
+                    </div>
+                </div>
+            -->
+            </div>
+            <div class="chat-input-cont">
+                <div class="ci-cont"><input type="text" class="chat-input" placeholder="Type chat here.."></div>
+                <div class="ci-send"><button class="chat-send">Send</button></div>
+            </div>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/room.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "socket-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.27.0",
+    "nodemon": "^2.0.4",
+    "socket.io": "^2.3.0",
+    "uuid": "^8.3.0",
+    "webrtc-adapter": "^7.7.0"
+  }
+}
