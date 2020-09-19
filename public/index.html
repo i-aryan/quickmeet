@@ -10,26 +10,42 @@
 </head>
 
 <body>
-
-    <div class="landing">
-        <div class="head-cont unselectable">
+    <navbar>
+        <div class="logo">QuickMeet</div>
+    </navbar>
+    <!-- <div class="landing"> -->
+        <!-- <div class="head-cont unselectable">
             Welcome to QuickMeet!
+        </div> -->
+
+        <div class="main">
+            <div class="create-join">
+                <div class="text"><div class="head">Create Video Meetings in one-click.</div>
+                <div class="subtext">No sign ups required. Open Source platform.</div>
+                </div>
+                <button id="createroom" class="createroom-butt unselectable">Create Room</button><br>
+                <input type="text" name="room" placeholder="Enter Room Code" id="room" class="roomcode"><br>
+                <div class="joinroom unselectable" id="joinroom">Join Room</div>
+            </div>
+            <div class="video-cont">
+                <video class="video-self" autoplay muted playsinline></video>
+            </div>
         </div>
 
-        <div class="main-cont">
+        <!-- <div class="main-cont">
 
             <form class="roomform" action="room.html" method="GET">
                 <div class="formcont">
                     <input type="text" name="name" placeholder="Enter your name" id="username" class="inputtext"><br>
-                    <input type="text" name="room" placeholder="Room Code" id="room" class="inputtext"><br>
+                    
                     <button type="submit" class="butt unselectable" id="joinroom">Join Room</button>
-                    <button id="createroom" class="butt2 unselectable">Create Room</button>
+                    
                 </div>
             </form>
 
-        </div>
+        </div> -->
 
-    </div>
+    <!-- </div> -->
 
     <script src="js/landing.js"></script>
 </body>

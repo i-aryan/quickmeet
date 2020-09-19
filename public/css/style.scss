@@ -32,91 +32,234 @@ img {
 }
 
 body {
-    background-color: $blue0;
+    background-color: #ffffff;
 }
 
-.head-cont {
-    margin: 0 auto;
-    border-radius: 3px;
-    padding: 10px 30px;
-    background-color: white;
-    font-size: 1.25rem;
-    font-weight: bold;
+// .head-cont {
+//     margin: 0 auto;
+//     border-radius: 3px;
+//     padding: 10px 30px;
+//     background-color: white;
+//     font-size: 1.25rem;
+//     font-weight: bold;
+//     margin-top: 20vh;
+//     width: 30%;
+//     color: $blue0;
+// }
+
+navbar {
+    .logo {
+        font-size: 28px;
+        color: #393e46;
+        font-weight: bold;
+        padding: 0 12%;
+        margin-top: 32px;
+    }
+}
+
+.main {
+    display: flex;
+    padding: 0 12%;
     margin-top: 20vh;
-    width: 30%;
-    color: $blue0;
-}
+    width: 100%;
 
-.main-cont {
-    margin: 0 auto;
-    margin-top: 10px;
-    background-color: $white;
-    width: 30%;
-    border-radius: 3px;
-    padding: 30px 30px;
+    .create-join {
+        width: 85%;
+        margin-right: 50px;
 
-    .formcont {
-        margin: 0 auto;
-        text-align: center;
+        .text {
+            .head {
+                font-size: 36px;
+                font-weight: bold;
+                color: #393e46;
+            }
+            .subtext {
+                font-size: 24px;
+                color: #6f6f6f;
+                margin-top: 10px;
+            }
+        }
+
+        .createroom-butt {
+            width: 100%;
+            margin-top: 60px;
+            font-size: 24px;
+            font-weight: bold;
+            background-color: #4ecca3;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            border: 2px solid #4ecca3;
+            transition: 0.3s;
+
+            &:hover {
+                background-color: white;
+                border: 2px solid #4ecca3;
+                color: #4ecca3;
+                cursor: pointer;
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .createroom-clicked {
+            width: 100%;
+            margin-top: 60px;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: white;
+            border: 2px solid #4ecca3;
+            color: #4ecca3;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .roomcode {
+            width: 100%;
+            margin-top: 30px;
+            font-size: 24px;
+            color: #393e46;
+            text-align: center;
+            padding: 10px 0;
+            border: none;
+            border-bottom: 3px solid #232931;
+            border-top: 2px solid white;
+            font-weight: bold;
+
+            &:focus {
+                background-color: white;
+                border: 0;
+                border-bottom: 3px solid #232931;
+                border-top: 2px solid white;
+                outline: none;
+                border-radius: 0;
+            }
+        }
+
+        .joinroom {
+            margin-top: 20px;
+            width: 100%;
+            text-align: right;
+            font-size: 24px;
+            font-weight: bold;
+            color: #232931;
+
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
     }
 
-    .inputtext {
-        height: 40px;
-        font-size: 1rem;
-        padding: 4px 10px;
-        &:focus {
-            outline: none;
-        }
-        border: none;
-        margin: 0 auto;
+    .video-cont {
         width: 100%;
-        color: $black;
-        margin-bottom: 10px;
-        border-radius: 2px;
-    }
 
-    .butt {
-        margin-top: 10px;
-        padding: 10px 20px;
-        border: none;
-        background-color: $blue0;
-        color: white;
-        font-size: 16px;
-        border-radius: 2px;
-        transition: background-color 0.5s;
-
-        &:hover {
-            background-color: $blue;
-            cursor: pointer;
-        }
-
-        &:focus {
-            outline: none;
-        }
-    }
-
-    .butt2 {
-        margin-top: 10px;
-        padding: 10px 20px;
-        border: none;
-        background-color: white;
-        color: $blue0;
-        font-size: 16px;
-        border-radius: 2px;
-        margin-left: 10px;
-        transition: background-color 0.5s;
-
-        &:hover {
-            color: $blue;
-            cursor: pointer;
-            opacity: 0.7;
-        }
-
-        &:focus {
-            outline: none;
+        .video-self {
+            height: 400px;
+            width: 100%;
+            background-color: #393e46;
+            border-radius: 10px;
+            object-fit: cover;
         }
     }
 }
+
+@media (max-width: 1200px) {
+    .main {
+        flex-direction: column;
+
+        .create-join {
+            width: 100%;
+            margin-right: 0;
+        }
+
+        .video-cont {
+            margin-top: 100px;
+            margin-bottom: 100px;
+        }
+    }
+}
+
+// .main-cont {
+//     margin: 0 auto;
+//     margin-top: 10px;
+//     background-color: $white;
+//     width: 30%;
+//     border-radius: 3px;
+//     padding: 30px 30px;
+
+//     .formcont {
+//         margin: 0 auto;
+//         text-align: center;
+//     }
+
+//     .inputtext {
+//         height: 40px;
+//         font-size: 1rem;
+//         padding: 4px 10px;
+//         &:focus {
+//             outline: none;
+//         }
+//         border: none;
+//         margin: 0 auto;
+//         width: 100%;
+//         color: $black;
+//         margin-bottom: 10px;
+//         border-radius: 2px;
+//     }
+
+//     .butt {
+//         margin-top: 10px;
+//         padding: 10px 20px;
+//         border: none;
+//         background-color: $blue0;
+//         color: white;
+//         font-size: 16px;
+//         border-radius: 2px;
+//         transition: background-color 0.5s;
+
+//         &:hover {
+//             background-color: $blue;
+//             cursor: pointer;
+//         }
+
+//         &:focus {
+//             outline: none;
+//         }
+//     }
+
+//     .butt2 {
+//         margin-top: 10px;
+//         padding: 10px 20px;
+//         border: none;
+//         background-color: white;
+//         color: $blue0;
+//         font-size: 16px;
+//         border-radius: 2px;
+//         margin-left: 10px;
+//         transition: background-color 0.5s;
+
+//         &:hover {
+//             color: $blue;
+//             cursor: pointer;
+//             opacity: 0.7;
+//         }
+
+//         &:focus {
+//             outline: none;
+//         }
+//     }
+// }
 
 .container-room {
     margin: 0;

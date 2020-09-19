@@ -22,84 +22,132 @@ img {
 }
 
 body {
-  background-color: #3498db;
+  background-color: #ffffff;
 }
 
-.head-cont {
-  margin: 0 auto;
-  border-radius: 3px;
-  padding: 10px 30px;
-  background-color: white;
-  font-size: 1.25rem;
+navbar .logo {
+  font-size: 28px;
+  color: #393e46;
   font-weight: bold;
+  padding: 0 12%;
+  margin-top: 32px;
+}
+
+.main {
+  display: flex;
+  padding: 0 12%;
   margin-top: 20vh;
-  width: 30%;
-  color: #3498db;
-}
-
-.main-cont {
-  margin: 0 auto;
-  margin-top: 10px;
-  background-color: #ecf0f1;
-  width: 30%;
-  border-radius: 3px;
-  padding: 30px 30px;
-}
-.main-cont .formcont {
-  margin: 0 auto;
-  text-align: center;
-}
-.main-cont .inputtext {
-  height: 40px;
-  font-size: 1rem;
-  padding: 4px 10px;
-  border: none;
-  margin: 0 auto;
   width: 100%;
-  color: #34495e;
-  margin-bottom: 10px;
-  border-radius: 2px;
 }
-.main-cont .inputtext:focus {
-  outline: none;
+.main .create-join {
+  width: 85%;
+  margin-right: 50px;
 }
-.main-cont .butt {
+.main .create-join .text .head {
+  font-size: 36px;
+  font-weight: bold;
+  color: #393e46;
+}
+.main .create-join .text .subtext {
+  font-size: 24px;
+  color: #6f6f6f;
   margin-top: 10px;
-  padding: 10px 20px;
-  border: none;
-  background-color: #3498db;
+}
+.main .create-join .createroom-butt {
+  width: 100%;
+  margin-top: 60px;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #4ecca3;
   color: white;
-  font-size: 16px;
-  border-radius: 2px;
-  transition: background-color 0.5s;
-}
-.main-cont .butt:hover {
-  background-color: #2980b9;
-  cursor: pointer;
-}
-.main-cont .butt:focus {
-  outline: none;
-}
-.main-cont .butt2 {
-  margin-top: 10px;
+  text-align: center;
   padding: 10px 20px;
   border: none;
+  border-radius: 10px;
+  border: 2px solid #4ecca3;
+  transition: 0.3s;
+}
+.main .create-join .createroom-butt:hover {
   background-color: white;
-  color: #3498db;
-  font-size: 16px;
-  border-radius: 2px;
-  margin-left: 10px;
-  transition: background-color 0.5s;
-}
-.main-cont .butt2:hover {
-  color: #2980b9;
+  border: 2px solid #4ecca3;
+  color: #4ecca3;
   cursor: pointer;
-  opacity: 0.7;
 }
-.main-cont .butt2:focus {
+.main .create-join .createroom-butt:focus {
   outline: none;
+}
+.main .create-join .createroom-clicked {
+  width: 100%;
+  margin-top: 60px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+  border: 2px solid #4ecca3;
+  color: #4ecca3;
+}
+.main .create-join .createroom-clicked:focus {
+  outline: none;
+}
+.main .create-join .roomcode {
+  width: 100%;
+  margin-top: 30px;
+  font-size: 24px;
+  color: #393e46;
+  text-align: center;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 3px solid #232931;
+  border-top: 2px solid white;
+  font-weight: bold;
+}
+.main .create-join .roomcode:focus {
+  background-color: white;
+  border: 0;
+  border-bottom: 3px solid #232931;
+  border-top: 2px solid white;
+  outline: none;
+  border-radius: 0;
+}
+.main .create-join .joinroom {
+  margin-top: 20px;
+  width: 100%;
+  text-align: right;
+  font-size: 24px;
+  font-weight: bold;
+  color: #232931;
+}
+.main .create-join .joinroom:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.main .video-cont {
+  width: 100%;
+}
+.main .video-cont .video-self {
+  height: 400px;
+  width: 100%;
+  background-color: #393e46;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
+@media (max-width: 1200px) {
+  .main {
+    flex-direction: column;
+  }
+  .main .create-join {
+    width: 100%;
+    margin-right: 0;
+  }
+  .main .video-cont {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+}
 .container-room {
   margin: 0;
   top: 0;
