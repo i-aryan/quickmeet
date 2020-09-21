@@ -5,11 +5,14 @@ const myvideo = document.querySelector("#vd1");
 // const video3 = document.querySelector("#vd3");
 // const video4 = document.querySelector("#vd4");
 const roomid = params.get("room");
-const username = params.get("name");
+let username;
 const chatRoom = document.querySelector('.chat-cont');
 const sendButton = document.querySelector('.chat-send');
 const messageField = document.querySelector('.chat-input');
 const videoContainer = document.querySelector('#vcont');
+const overlayContainer = document.querySelector('#overlay')
+const continueButt = document.querySelector('.continue-name');
+const nameField = document.querySelector('#name-field');
 //const roomIDtext = document.querySelector('.chatroom-id');
 
 //roomIDtext.innerHTML = `Room Code: ${roomid}`;
@@ -21,8 +24,24 @@ const mediaConstraints = { video: true, audio: true };
 let connections = {};
 
 //Join the room
+continueButt.addEventListener('click', ()=>{
+    if(nameField.value == '') return;
+    username = nameField.value;
+    overlayContainer.style.visibility = 'hidden';
+    socket.emit("join room", roomid, username);
 
-socket.emit("join room", roomid, username);
+})
+
+nameField.addEventListener("keyup", function (event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        continueButt.click();
+    }
+});
+
 
 //for da css
 socket.on('user count', count =>{

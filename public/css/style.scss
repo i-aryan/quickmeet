@@ -2,7 +2,8 @@ $blue: #2980b9;
 $blue0: #3498db;
 $blue-1: #74b9ff;
 $white: #ecf0f1;
-$black: #34495e;
+$nicegreen: #4ECCA3;
+$black: #393E46;
 $spacemono: "Space Mono", monospace;
 $opensans: "Open Sans", sans-serif;
 
@@ -17,6 +18,22 @@ $opensans: "Open Sans", sans-serif;
     margin: 0;
     padding: 0;
     font-family: $opensans;
+}
+
+.mr-1{
+    margin-right: 10px;
+}
+
+.mr-2{
+    margin-right: 20px;
+}
+
+.mr-3{
+    margin-right: 30px;
+}
+
+.mr-4{
+    margin-right: 40px;
 }
 
 .unselectable {
@@ -194,6 +211,7 @@ navbar {
 
                 &:hover {
                     background-color: #393e46;
+                    cursor: pointer;
                 }
             }
 
@@ -208,6 +226,7 @@ navbar {
 
                 &:hover {
                     background-color: #393e46;
+                    cursor: pointer;
                 }
             }
         }
@@ -301,6 +320,70 @@ navbar {
 //     }
 // }
 
+.overlay{
+    position: fixed;
+    z-index: 5;
+    top:0;
+    left:0;
+    bottom: 0;
+    right:0;
+    height: 100%;
+    width: 100%;
+    background-color: $black;
+
+    .box{
+        width: 25%;
+        margin: 0 auto;
+        height: 200px;
+        background-color: #ffffff;
+        margin-top: 100px;
+        border-radius: 10px;
+        text-align: center;
+
+        .head-name{
+            padding-top: 20px;
+            text-align: center;
+            color: $black;
+            font-weight: bold;
+        }
+
+        .name-field{
+            margin: 0px auto;
+            margin-top:20px;
+            border:0;
+            font-weight: bold;
+            padding:10px;
+            width:90%;
+            border-bottom: 3px solid $nicegreen;
+            color: $black;
+            height:40px;
+
+            &:focus{
+                outline: none;
+            }
+        }
+
+        .continue-name{
+            border: none;
+            margin: 0 auto;
+            margin-top: 30px;
+            color: #ffffff;
+            font-weight: bold;
+            background-color: $nicegreen;
+            padding:12px 20px;
+            border-radius: 10px;
+            transition: opacity 0.5s;
+            &:hover{
+                opacity: 0.8;
+                cursor: pointer;
+            }
+            &:focus{
+                outline: 0;
+            }
+        }
+    }
+}
+
 .container-room {
     margin: 0;
     top: 0;
@@ -328,8 +411,8 @@ navbar {
     }
 
     .left-cont {
-        width: 70%;
-        background-color: $white;
+        width: 80%;
+        background-color: $black;
         height: 100vh;
         padding: 50px;
         text-align: center;
@@ -339,7 +422,7 @@ navbar {
             grid-template-columns: 1fr 1fr;
             grid-gap: 20px;
             height: 75vh;
-            overflow-y: auto;
+            // overflow-y: auto;
 
             .video-dummy {
                 background-color: #353b48;
@@ -353,7 +436,7 @@ navbar {
 
         .video-cont-single {
             height: 75vh;
-            overflow-y: auto;
+            // overflow-y: auto;
 
             .video-dummy {
                 background-color: #353b48;
@@ -370,34 +453,55 @@ navbar {
             margin: 0 auto;
             display: flex;
             margin-top: 50px;
-            width: 10%;
+            width: 180px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 10px;
+            justify-content: center;
 
             .audio {
-                background-color: $blue0;
-                height: 44px;
+                background-color: $nicegreen;
                 text-align: center;
                 color: white;
-                padding: 10px 20px;
-                border-radius: 2px;
-
+                padding: 10px;
+                height: 40px;
+                width: 40px;
+                border-radius: 100px;
                 &:hover {
                     cursor: pointer;
-                    background-color: $blue;
+                    background-color: $black;
                 }
             }
 
             .novideo {
-                background-color: $blue0;
-                height: 44px;
+                background-color: $nicegreen;
                 text-align: center;
                 margin-left: 10px;
                 color: white;
-                padding: 10px 20px;
-                border-radius: 2px;
+                padding: 10px;
+                height: 40px;
+                width: 40px;
+                border-radius: 100px;
 
                 &:hover {
                     cursor: pointer;
-                    background-color: $blue;
+                    background-color: $black;
+                }
+            }
+
+            .cutcall {
+                background-color: #CC4E4E;
+                text-align: center;
+                margin-left: 10px;
+                color: white;
+                padding: 10px;
+                height: 40px;
+                width: 40px;
+                border-radius: 100px;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: $black;
                 }
             }
         }
@@ -405,7 +509,7 @@ navbar {
 
     .right-cont {
         width: 30%;
-        background-color: $blue;
+        background-color: #FFFFFF;
         height: 100vh;
 
         ::-webkit-scrollbar {
@@ -428,47 +532,59 @@ navbar {
         }
 
         .head-title {
-            position: fixed;
             font-weight: bold;
-            color: white;
-            background-color: $blue;
+            color: $black;
+            background-color: #FFFFFF;
             width: 100%;
-            padding: 10px;
             display: flex;
+            border-bottom: 2px solid $black;
+
+            .chats, .attendies{
+                padding: 10px;
+                padding-top: 20px;
+                width: 100%;
+                text-align: center;
+                transition: background-color 0.5s;
+
+                &:hover{
+                    background-color: #f8f8f8;
+                    cursor: pointer;
+                }
+            }
+
         }
 
         .chat-cont {
-            background-color: white;
-            height: 86%;
+            background-color: #ffffff;
+            height: 84vh;
             padding: 10px;
-            padding-top: 0;
-            margin-top: 40px;
+            padding-top: 10px;
             overflow-y: scroll;
 
             .message {
-                padding: 10px;
-                margin-top: 10px;
-                background-color: rgb(241, 241, 241);
+                margin-bottom: 15px;
+                margin-left: 10px;
+                background-color: #ffffff;
                 border-radius: 2px;
                 word-break: break-all;
                 word-wrap: break-word;
                 .info {
                     display: flex;
-                    font-size: 0.75rem;
+                    font-size: 0.85rem;
 
                     .username {
                         font-weight: bold;
-                        color: $blue;
+                        color: $nicegreen;
                     }
 
                     .time {
-                        margin-left: 10px;
+                        margin-left: 12px;
                     }
                 }
 
                 .content {
                     margin-top: 5px;
-                    font-size: 0.85rem;
+                    font-size: 0.90rem;
                 }
             }
         }
@@ -477,7 +593,8 @@ navbar {
             padding: 12px;
             display: flex;
             height: 60px;
-            background-color: $blue;
+            background-color: #FFFFFF;
+            box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.15);
 
             .ci-cont {
                 width: 80%;
@@ -493,12 +610,16 @@ navbar {
                 height: 36px;
                 font-size: 0.85rem;
                 padding: 4px 10px;
+                
                 &:focus {
                     outline: none;
+                   
                 }
-                border: none;
+                border:none;
+                border-bottom: 3px solid $nicegreen;
                 color: $black;
-                border-radius: 2px;
+
+
             }
 
             .chat-send {
@@ -506,7 +627,8 @@ navbar {
                 padding: 5px 20px;
                 border: none;
                 background-color: white;
-                color: $blue0;
+                color: $nicegreen;
+                font-weight: bold;
                 font-size: 0.85rem;
                 border-radius: 2px;
                 transition: background-color 0.5s;

@@ -9,6 +9,22 @@
   font-family: "Open Sans", sans-serif;
 }
 
+.mr-1 {
+  margin-right: 10px;
+}
+
+.mr-2 {
+  margin-right: 20px;
+}
+
+.mr-3 {
+  margin-right: 30px;
+}
+
+.mr-4 {
+  margin-right: 40px;
+}
+
 .unselectable {
   -moz-user-select: -moz-none;
   -khtml-user-select: none;
@@ -155,6 +171,7 @@ navbar .logo {
 }
 .main .video-cont .settings .device:hover {
   background-color: #393e46;
+  cursor: pointer;
 }
 .main .video-cont .settings .nodevice {
   background-color: #b12c2c;
@@ -167,6 +184,7 @@ navbar .logo {
 }
 .main .video-cont .settings .nodevice:hover {
   background-color: #393e46;
+  cursor: pointer;
 }
 
 @media (max-width: 1200px) {
@@ -182,6 +200,65 @@ navbar .logo {
     margin-bottom: 100px;
   }
 }
+.overlay {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #393E46;
+}
+.overlay .box {
+  width: 25%;
+  margin: 0 auto;
+  height: 200px;
+  background-color: #ffffff;
+  margin-top: 100px;
+  border-radius: 10px;
+  text-align: center;
+}
+.overlay .box .head-name {
+  padding-top: 20px;
+  text-align: center;
+  color: #393E46;
+  font-weight: bold;
+}
+.overlay .box .name-field {
+  margin: 0px auto;
+  margin-top: 20px;
+  border: 0;
+  font-weight: bold;
+  padding: 10px;
+  width: 90%;
+  border-bottom: 3px solid #4ECCA3;
+  color: #393E46;
+  height: 40px;
+}
+.overlay .box .name-field:focus {
+  outline: none;
+}
+.overlay .box .continue-name {
+  border: none;
+  margin: 0 auto;
+  margin-top: 30px;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #4ECCA3;
+  padding: 12px 20px;
+  border-radius: 10px;
+  transition: opacity 0.5s;
+}
+.overlay .box .continue-name:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+.overlay .box .continue-name:focus {
+  outline: 0;
+}
+
 .container-room {
   margin: 0;
   top: 0;
@@ -205,8 +282,8 @@ navbar .logo {
   background: #555;
 }
 .container-room .left-cont {
-  width: 70%;
-  background-color: #ecf0f1;
+  width: 80%;
+  background-color: #393E46;
   height: 100vh;
   padding: 50px;
   text-align: center;
@@ -216,7 +293,6 @@ navbar .logo {
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
   height: 75vh;
-  overflow-y: auto;
 }
 .container-room .left-cont .video-cont .video-dummy {
   background-color: #353b48;
@@ -228,7 +304,6 @@ navbar .logo {
 }
 .container-room .left-cont .video-cont-single {
   height: 75vh;
-  overflow-y: auto;
 }
 .container-room .left-cont .video-cont-single .video-dummy {
   background-color: #353b48;
@@ -243,36 +318,56 @@ navbar .logo {
   margin: 0 auto;
   display: flex;
   margin-top: 50px;
-  width: 10%;
+  width: 180px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+  justify-content: center;
 }
 .container-room .left-cont .utils .audio {
-  background-color: #3498db;
-  height: 44px;
+  background-color: #4ECCA3;
   text-align: center;
   color: white;
-  padding: 10px 20px;
-  border-radius: 2px;
+  padding: 10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 100px;
 }
 .container-room .left-cont .utils .audio:hover {
   cursor: pointer;
-  background-color: #2980b9;
+  background-color: #393E46;
 }
 .container-room .left-cont .utils .novideo {
-  background-color: #3498db;
-  height: 44px;
+  background-color: #4ECCA3;
   text-align: center;
   margin-left: 10px;
   color: white;
-  padding: 10px 20px;
-  border-radius: 2px;
+  padding: 10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 100px;
 }
 .container-room .left-cont .utils .novideo:hover {
   cursor: pointer;
-  background-color: #2980b9;
+  background-color: #393E46;
+}
+.container-room .left-cont .utils .cutcall {
+  background-color: #CC4E4E;
+  text-align: center;
+  margin-left: 10px;
+  color: white;
+  padding: 10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 100px;
+}
+.container-room .left-cont .utils .cutcall:hover {
+  cursor: pointer;
+  background-color: #393E46;
 }
 .container-room .right-cont {
   width: 30%;
-  background-color: #2980b9;
+  background-color: #FFFFFF;
   height: 100vh;
   /* Track */
   /* Handle */
@@ -291,50 +386,60 @@ navbar .logo {
   background: #555;
 }
 .container-room .right-cont .head-title {
-  position: fixed;
   font-weight: bold;
-  color: white;
-  background-color: #2980b9;
+  color: #393E46;
+  background-color: #FFFFFF;
   width: 100%;
-  padding: 10px;
   display: flex;
+  border-bottom: 2px solid #393E46;
+}
+.container-room .right-cont .head-title .chats, .container-room .right-cont .head-title .attendies {
+  padding: 10px;
+  padding-top: 20px;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.5s;
+}
+.container-room .right-cont .head-title .chats:hover, .container-room .right-cont .head-title .attendies:hover {
+  background-color: #f8f8f8;
+  cursor: pointer;
 }
 .container-room .right-cont .chat-cont {
-  background-color: white;
-  height: 86%;
+  background-color: #ffffff;
+  height: 84vh;
   padding: 10px;
-  padding-top: 0;
-  margin-top: 40px;
+  padding-top: 10px;
   overflow-y: scroll;
 }
 .container-room .right-cont .chat-cont .message {
-  padding: 10px;
-  margin-top: 10px;
-  background-color: #f1f1f1;
+  margin-bottom: 15px;
+  margin-left: 10px;
+  background-color: #ffffff;
   border-radius: 2px;
   word-break: break-all;
   word-wrap: break-word;
 }
 .container-room .right-cont .chat-cont .message .info {
   display: flex;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
 }
 .container-room .right-cont .chat-cont .message .info .username {
   font-weight: bold;
-  color: #2980b9;
+  color: #4ECCA3;
 }
 .container-room .right-cont .chat-cont .message .info .time {
-  margin-left: 10px;
+  margin-left: 12px;
 }
 .container-room .right-cont .chat-cont .message .content {
   margin-top: 5px;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
 }
 .container-room .right-cont .chat-input-cont {
   padding: 12px;
   display: flex;
   height: 60px;
-  background-color: #2980b9;
+  background-color: #FFFFFF;
+  box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.15);
 }
 .container-room .right-cont .chat-input-cont .ci-cont {
   width: 80%;
@@ -349,8 +454,8 @@ navbar .logo {
   font-size: 0.85rem;
   padding: 4px 10px;
   border: none;
-  color: #34495e;
-  border-radius: 2px;
+  border-bottom: 3px solid #4ECCA3;
+  color: #393E46;
 }
 .container-room .right-cont .chat-input-cont .chat-input:focus {
   outline: none;
@@ -360,7 +465,8 @@ navbar .logo {
   padding: 5px 20px;
   border: none;
   background-color: white;
-  color: #3498db;
+  color: #4ECCA3;
+  font-weight: bold;
   font-size: 0.85rem;
   border-radius: 2px;
   transition: background-color 0.5s;

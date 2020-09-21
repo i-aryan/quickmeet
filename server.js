@@ -61,6 +61,7 @@ io.on('connect', socket => {
     })
 
     socket.on('disconnect', () => {
+        if(!socketroom[socket.id]) return;
         socket.to(socketroom[socket.id]).emit('message', `${socketname[socket.id]} left the chat.`, `Bot`, moment().format(
             "h:mm a"
         ));

@@ -40,7 +40,7 @@ createButton.addEventListener('click', (e) => {
     }, 500);
 
     //const name = nameField.value;
-    //location.href = `/room.html?name=${name}&room=${uuidv4()}`;
+    location.href = `/room.html?room=${uuidv4()}`;
 });
 
 joinBut.addEventListener('click', (e) => {
@@ -49,6 +49,8 @@ joinBut.addEventListener('click', (e) => {
         codeCont.classList.add('roomcode-error');
         return;
     }
+    const code = codeCont.value;
+    location.href = `/room.html?room=${code}`;
 })
 
 codeCont.addEventListener('change', (e) => {
