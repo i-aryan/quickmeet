@@ -12,4 +12,5 @@ A video chat/meeting webapp using WebRTC and WebSockets (socket.io). Basically a
 ## What is being coded right now?
 
 1. Screensharing
-2. Some UI elements fixes/additions/changes 
+2. Video Mute/ Audio Mute functionality
+3. Some UI elements fixes/additions/changes 
