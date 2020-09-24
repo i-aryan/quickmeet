@@ -14,3 +14,4 @@ A video chat/meeting webapp using WebRTC and WebSockets (socket.io). Basically a
 1. Screensharing
 2. Video Mute/ Audio Mute functionality
 3. Some UI elements fixes/additions/changes 
+4. Responsive front-end for Rooms
