@@ -1,9 +1,6 @@
 const socket = io();
 
 const myvideo = document.querySelector("#vd1");
-// const video2 = document.querySelector("#vd2");
-// const video3 = document.querySelector("#vd3");
-// const video4 = document.querySelector("#vd4");
 const roomid = params.get("room");
 let username;
 const chatRoom = document.querySelector('.chat-cont');
@@ -13,9 +10,6 @@ const videoContainer = document.querySelector('#vcont');
 const overlayContainer = document.querySelector('#overlay')
 const continueButt = document.querySelector('.continue-name');
 const nameField = document.querySelector('#name-field');
-//const roomIDtext = document.querySelector('.chatroom-id');
-
-//roomIDtext.innerHTML = `Room Code: ${roomid}`;
 
 const configuration = { iceServers: [{ urls: "stun:stun.stunprotocol.org" }] }
 
@@ -23,7 +17,6 @@ const mediaConstraints = { video: true, audio: true };
 
 let connections = {};
 
-//Join the room
 continueButt.addEventListener('click', ()=>{
     if(nameField.value == '') return;
     username = nameField.value;
@@ -42,8 +35,6 @@ nameField.addEventListener("keyup", function (event) {
     }
 });
 
-
-//for da css
 socket.on('user count', count =>{
     if(count>1){
         videoContainer.className = 'video-cont';
@@ -72,56 +63,6 @@ function handleGetUserMediaError(e) {
 
 }
 
-// function handleICECandidateEvent(event) {
-//     if (event.candidate) {
-//         console.log('icecandidate fired');
-//         socket.emit('new icecandidate', event.candidate, roomid);
-//     }
-// }
-
-
-// function handleNegotiationNeededEvent() {
-
-//     peerConnection.createOffer()
-//         .then(function (offer) {
-//             return peerConnection.setLocalDescription(offer);
-//         })
-//         .then(function () {
-
-//             socket.emit('video-offer', peerConnection.localDescription, roomid);
-
-//         })
-//         .catch(reportError);
-// }
-
-// function handleTrackEvent(event) {
-
-//     console.log('track event fired')
-//     let newvideo = document.createElement('video');
-//     newvideo.classList.add('video-dummy');
-//     newvideo.autoplay = true;
-//     newvideo.playsinline = true;
-//     newvideo.srcObject = event.streams[0];
-
-//     videoContainer.appendChild(newvideo);
-//     //video2.srcObject = event.streams[0];
-
-// }
-
-
-
-
-// function createPeerConnection() {
-//     peerConnection = new RTCPeerConnection(configuration);
-
-//     peerConnection.onicecandidate = handleICECandidateEvent;
-//     peerConnection.ontrack = handleTrackEvent;
-//     peerConnection.onnegotiationneeded = handleNegotiationNeededEvent;
-//     // peerConnection.onremovetrack = handleRemoveTrackEvent;
-//     // peerConnection.oniceconnectionstatechange = handleICEConnectionStateChangeEvent;
-//     // peerConnection.onicegatheringstatechange = handleICEGatheringStateChangeEvent;
-//     // peerConnection.onsignalingstatechange = handleSignalingStateChangeEvent;
-// }
 
 function reportError(e) {
     console.log(e);
@@ -348,5 +289,18 @@ socket.on('message', (msg, sendername, time) => {
     </div>
 </div>`
 });
+
+//Code for utils
+const videoButt = document.querySelector('.novideo');
+let videoAllowed = 1;
+
+videoButt.addEventListener('click', ()=>{
+    if(videoAllowed){
+        
+    }
+    else{
+
+    }
+})
 
 
