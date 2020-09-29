@@ -1,5 +1,4 @@
 const socket = io();
-
 const myvideo = document.querySelector("#vd1");
 const roomid = params.get("room");
 let username;
@@ -15,12 +14,22 @@ const audioButt = document.querySelector('.audio');
 let videoAllowed = 1;
 let audioAllowed = 1;
 
+let micInfo = {};
+let videoInfo = {};
+
+//hiding mute icon
+let mymuteicon = document.querySelector("#mymuteicon");
+mymuteicon.style.visibility = 'hidden';
+
+let myvideooff = document.querySelector("#myvideooff");
+myvideooff.style.visibility = 'hidden';
+
 const configuration = { iceServers: [{ urls: "stun:stun.stunprotocol.org" }] }
 
 const mediaConstraints = { video: true, audio: true };
 
 let connections = {};
-let cName = { 'dummy': 'object' };
+let cName = {};
 let audioTrackSent = {};
 let videoTrackSent = {};
 
@@ -105,10 +114,12 @@ function startCall() {
 
 }
 
-function handleVideoOffer(offer, sid, cname) {
+function handleVideoOffer(offer, sid, cname, micinf, vidinf) {
 
     cName[sid] = cname;
     console.log('video offered recevied');
+    micInfo[sid]=micinf;
+    videoInfo[sid]=vidinf;
     //createPeerConnection();
     connections[sid] = new RTCPeerConnection(configuration);
 
@@ -126,16 +137,38 @@ function handleVideoOffer(offer, sid, cname) {
             let vidCont = document.createElement('div');
             let newvideo = document.createElement('video');
             let name = document.createElement('div');
+            let muteIcon = document.createElement('div');
+            let videoOff = document.createElement('div');
+            videoOff.classList.add('video-off');
+            muteIcon.classList.add('mute-icon');
             name.classList.add('nametag');
             name.innerHTML = `${cName[sid]}`;
             vidCont.id = sid;
+            muteIcon.id = `mute${sid}`;
+            videoOff.id = `vidoff${sid}`;
+            muteIcon.innerHTML = `<i class="fas fa-microphone-slash"></i>`;
+            videoOff.innerHTML = 'Video Off'
             vidCont.classList.add('video-box');
             newvideo.classList.add('video-frame');
             newvideo.autoplay = true;
             newvideo.playsinline = true;
             newvideo.srcObject = event.streams[0];
+
+            if (micInfo[sid] == 'on')
+                muteIcon.style.visibility = 'hidden';
+            else
+                muteIcon.style.visibility = 'visible';
+
+            if (videoInfo[sid] == 'on')
+                videoOff.style.visibility = 'hidden';
+            else
+                videoOff.style.visibility = 'visible';
+
             vidCont.appendChild(newvideo);
             vidCont.appendChild(name);
+            vidCont.appendChild(muteIcon);
+            vidCont.appendChild(videoOff);
+
             videoContainer.appendChild(vidCont);
         }
         //video2.srcObject = event.streams[0];
@@ -172,10 +205,16 @@ function handleVideoOffer(offer, sid, cname) {
             localStream.getTracks().forEach(track => {
                 connections[sid].addTrack(track, localStream);
                 console.log('added local stream to peer')
-                if (track.kind === 'audio')
+                if (track.kind === 'audio') {
                     audioTrackSent[sid] = track;
-                else
+                    if (!audioAllowed)
+                        audioTrackSent[sid].enabled = false;
+                }
+                else {
                     videoTrackSent[sid] = track;
+                    if (!videoAllowed)
+                        videoTrackSent[sid].enabled = false
+                }
             })
         })
         .then(() => {
@@ -213,10 +252,17 @@ socket.on('new icecandidate', handleNewIceCandidate);
 socket.on('video-answer', handleVideoAnswer);
 
 
-socket.on('join room', async (conc, cnames) => {
+socket.on('join room', async (conc, cnames, micinfo, videoinfo) => {
 
     if (cnames)
         cName = cnames;
+
+    if (micinfo)
+        micInfo = micinfo;
+
+    if (videoinfo)
+        videoInfo = videoinfo;
+
 
     console.log(cName);
     if (conc) {
@@ -237,16 +283,38 @@ socket.on('join room', async (conc, cnames) => {
                     let vidCont = document.createElement('div');
                     let newvideo = document.createElement('video');
                     let name = document.createElement('div');
+                    let muteIcon = document.createElement('div');
+                    let videoOff = document.createElement('div');
+                    videoOff.classList.add('video-off');
+                    muteIcon.classList.add('mute-icon');
                     name.classList.add('nametag');
                     name.innerHTML = `${cName[sid]}`;
                     vidCont.id = sid;
+                    muteIcon.id = `mute${sid}`;
+                    videoOff.id = `vidoff${sid}`;
+                    muteIcon.innerHTML = `<i class="fas fa-microphone-slash"></i>`;
+                    videoOff.innerHTML = 'Video Off'
                     vidCont.classList.add('video-box');
                     newvideo.classList.add('video-frame');
                     newvideo.autoplay = true;
                     newvideo.playsinline = true;
                     newvideo.srcObject = event.streams[0];
+
+                    if (micInfo[sid] == 'on')
+                        muteIcon.style.visibility = 'hidden';
+                    else
+                        muteIcon.style.visibility = 'visible';
+
+                    if (videoInfo[sid] == 'on')
+                        videoOff.style.visibility = 'hidden';
+                    else
+                        videoOff.style.visibility = 'visible';
+
                     vidCont.appendChild(newvideo);
                     vidCont.appendChild(name);
+                    vidCont.appendChild(muteIcon);
+                    vidCont.appendChild(videoOff);
+
                     videoContainer.appendChild(vidCont);
                 }
                 //video2.srcObject = event.streams[0];
@@ -348,10 +416,16 @@ videoButt.addEventListener('click', () => {
         videoAllowed = 0;
         videoButt.style.backgroundColor = "#b12c2c";
 
-        mystream.getTracks().forEach(track => {
-            if (track.kind === 'video')
-                track.enabled = false;
-        })
+        if (mystream) {
+            mystream.getTracks().forEach(track => {
+                if (track.kind === 'video')
+                    track.enabled = false;
+            })
+        }
+
+        myvideooff.style.visibility = 'visible';
+
+        socket.emit('action', 'videooff');
     }
     else {
         for (let key in videoTrackSent) {
@@ -360,10 +434,17 @@ videoButt.addEventListener('click', () => {
         videoButt.innerHTML = `<i class="fas fa-video"></i>`;
         videoAllowed = 1;
         videoButt.style.backgroundColor = "#4ECCA3";
-        mystream.getTracks().forEach(track => {
-            if (track.kind === 'video')
-                track.enabled = true;
-        })
+        if (mystream) {
+            mystream.getTracks().forEach(track => {
+                if (track.kind === 'video')
+                    track.enabled = true;
+            })
+        }
+
+
+        myvideooff.style.visibility = 'hidden';
+
+        socket.emit('action', 'videoon');
     }
 })
 
@@ -382,10 +463,16 @@ audioButt.addEventListener('click', () => {
         audioButt.innerHTML = `<i class="fas fa-microphone-slash"></i>`;
         audioAllowed = 0;
         audioButt.style.backgroundColor = "#b12c2c";
-        mystream.getTracks().forEach(track => {
-            if (track.kind === 'audio')
-                track.enabled = false;
-        })
+        if (mystream) {
+            mystream.getTracks().forEach(track => {
+                if (track.kind === 'audio')
+                    track.enabled = false;
+            })
+        }
+
+        mymuteicon.style.visibility = 'visible';
+
+        socket.emit('action', 'mute');
     }
     else {
         for (let key in audioTrackSent) {
@@ -394,10 +481,39 @@ audioButt.addEventListener('click', () => {
         audioButt.innerHTML = `<i class="fas fa-microphone"></i>`;
         audioAllowed = 1;
         audioButt.style.backgroundColor = "#4ECCA3";
-        mystream.getTracks().forEach(track => {
-            if (track.kind === 'audio')
-                track.enabled = true;
-        })
+        if (mystream) {
+            mystream.getTracks().forEach(track => {
+                if (track.kind === 'audio')
+                    track.enabled = true;
+            })
+        }
+
+        mymuteicon.style.visibility = 'hidden';
+
+        socket.emit('action', 'unmute');
+    }
+})
+
+socket.on('action', (msg, sid) => {
+    if (msg == 'mute') {
+        console.log(sid + ' muted themself');
+        document.querySelector(`#mute${sid}`).style.visibility = 'visible';
+        micInfo[sid] = 'off';
+    }
+    else if (msg == 'unmute') {
+        console.log(sid + ' unmuted themself');
+        document.querySelector(`#mute${sid}`).style.visibility = 'hidden';
+        micInfo[sid] = 'on';
+    }
+    else if (msg == 'videooff') {
+        console.log(sid + 'turned video off');
+        document.querySelector(`#vidoff${sid}`).style.visibility = 'visible';
+        videoInfo[sid] = 'off';
+    }
+    else if (msg == 'videoon') {
+        console.log(sid + 'turned video on');
+        document.querySelector(`#vidoff${sid}`).style.visibility = 'hidden';
+        videoInfo[sid] = 'on';
     }
 })
 

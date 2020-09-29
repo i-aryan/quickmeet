@@ -312,10 +312,25 @@ navbar .logo {
 }
 .container-room .left-cont .video-cont .video-box .nametag {
   color: white;
-  font-weight: bold;
   bottom: 10px;
   position: absolute;
   left: 10px;
+  bottom: 10px;
+}
+.container-room .left-cont .video-cont .video-box .video-off {
+  color: white;
+  bottom: 10px;
+  position: absolute;
+  left: 10px;
+  top: 40%;
+  left: 45%;
+}
+.container-room .left-cont .video-cont .video-box .mute-icon {
+  color: #d63434;
+  bottom: 10px;
+  position: absolute;
+  right: 10px;
+  font-size: 20px;
   bottom: 10px;
 }
 .container-room .left-cont .video-cont-single {
@@ -339,10 +354,25 @@ navbar .logo {
 }
 .container-room .left-cont .video-cont-single .video-box .nametag {
   color: white;
-  font-weight: bold;
   bottom: 10px;
   position: absolute;
   left: 10px;
+  bottom: 10px;
+}
+.container-room .left-cont .video-cont-single .video-box .video-off {
+  color: white;
+  bottom: 10px;
+  position: absolute;
+  left: 10px;
+  top: 40%;
+  left: 45%;
+}
+.container-room .left-cont .video-cont-single .video-box .mute-icon {
+  color: #d63434;
+  bottom: 10px;
+  position: absolute;
+  right: 10px;
+  font-size: 20px;
   bottom: 10px;
 }
 .container-room .left-cont .utils {
