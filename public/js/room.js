@@ -17,8 +17,13 @@ const mediaConstraints = { video: true, audio: true };
 
 let connections = {};
 
-continueButt.addEventListener('click', ()=>{
-    if(nameField.value == '') return;
+let audioTrackSent = {};
+let videoTrackSent = {};
+
+let mystream;
+
+continueButt.addEventListener('click', () => {
+    if (nameField.value == '') return;
     username = nameField.value;
     overlayContainer.style.visibility = 'hidden';
     socket.emit("join room", roomid, username);
@@ -35,11 +40,11 @@ nameField.addEventListener("keyup", function (event) {
     }
 });
 
-socket.on('user count', count =>{
-    if(count>1){
+socket.on('user count', count => {
+    if (count > 1) {
         videoContainer.className = 'video-cont';
     }
-    else{
+    else {
         videoContainer.className = 'video-cont-single';
     }
 })
@@ -79,8 +84,13 @@ function startCall() {
 
             localStream.getTracks().forEach(track => {
                 // peerConnection.addTrack(track, localStream);
-                for (let key in connections)
+                for (let key in connections) {
                     connections[key].addTrack(track, localStream);
+                    if (track.kind === 'audio')
+                        audioTrackSent[key] = track;
+                    else
+                        videoTrackSent[key] = track;
+                }
             })
 
 
@@ -120,7 +130,7 @@ function handleVideoOffer(offer, sid) {
 
     };
 
-    connections[sid].onremovetrack = function(event){
+    connections[sid].onremovetrack = function (event) {
         if (document.getElementById(sid)) {
             document.getElementById(sid).remove();
         }
@@ -150,6 +160,10 @@ function handleVideoOffer(offer, sid) {
             localStream.getTracks().forEach(track => {
                 connections[sid].addTrack(track, localStream);
                 console.log('added local stream to peer')
+                if (track.kind === 'audio')
+                    audioTrackSent[sid] = track;
+                else
+                    videoTrackSent[sid] = track;
             })
         })
         .then(() => {
@@ -215,7 +229,7 @@ socket.on('join room', async (conc) => {
 
             };
 
-            connections[sid].onremovetrack = function(event){
+            connections[sid].onremovetrack = function (event) {
                 if (document.getElementById(sid)) {
                     document.getElementById(sid).remove();
                 }
@@ -247,12 +261,13 @@ socket.on('join room', async (conc) => {
             .then(localStream => {
                 myvideo.srcObject = localStream;
                 myvideo.muted = true;
+                mystream = localStream;
             })
             .catch(handleGetUserMediaError);
     }
 })
 
-socket.on('remove peer', sid =>{
+socket.on('remove peer', sid => {
     if (document.getElementById(sid)) {
         document.getElementById(sid).remove();
     }
@@ -292,14 +307,78 @@ socket.on('message', (msg, sendername, time) => {
 
 //Code for utils
 const videoButt = document.querySelector('.novideo');
+const audioButt = document.querySelector('.audio');
 let videoAllowed = 1;
+let audioAllowed = 1;
 
-videoButt.addEventListener('click', ()=>{
-    if(videoAllowed){
+videoButt.addEventListener('click', () => {
+    console.log('videotracks')
+    console.log(videoTrackSent);
+
+    console.log('audiotracks');
+    console.log(audioTrackSent);
+
+    console.log('mystream');
+    console.log(mystream);
+
+    if (videoAllowed) {
+        for (let key in videoTrackSent) {
+            videoTrackSent[key].enabled = false;
+        }
+        videoButt.innerHTML = `<i class="fas fa-video-slash"></i>`;
+        videoAllowed = 0;
+        videoButt.style.backgroundColor = "#b12c2c";
         
+        mystream.getTracks().forEach(track => {
+            if (track.kind === 'video')
+                track.enabled = false;
+        })
     }
-    else{
+    else {
+        for (let key in videoTrackSent) {
+            videoTrackSent[key].enabled = true;
+        }
+        videoButt.innerHTML = `<i class="fas fa-video"></i>`;
+        videoAllowed = 1;
+        videoButt.style.backgroundColor = "#4ECCA3";
+        mystream.getTracks().forEach(track => {
+            if (track.kind === 'video')
+                track.enabled = true;
+        })
+    }
+})
 
+
+audioButt.addEventListener('click', () => {
+    // console.log('videotracks')
+    // console.log(videoTrackSent);
+
+    // console.log('audiotracks');
+    // console.log(audioTrackSent);
+
+    if (audioAllowed) {
+        for (let key in audioTrackSent) {
+            audioTrackSent[key].enabled = false;
+        }
+        audioButt.innerHTML = `<i class="fas fa-microphone-slash"></i>`;
+        audioAllowed = 0;
+        audioButt.style.backgroundColor = "#b12c2c";
+        mystream.getTracks().forEach(track => {
+            if (track.kind === 'audio')
+                track.enabled = false;
+        })
+    }
+    else {
+        for (let key in audioTrackSent) {
+            audioTrackSent[key].enabled = true;
+        }
+        audioButt.innerHTML = `<i class="fas fa-microphone"></i>`;
+        audioAllowed = 1;
+        audioButt.style.backgroundColor = "#4ECCA3";
+        mystream.getTracks().forEach(track => {
+            if (track.kind === 'audio')
+                track.enabled = true;
+        })
     }
 })
 

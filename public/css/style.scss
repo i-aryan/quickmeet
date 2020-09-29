@@ -52,17 +52,7 @@ body {
     background-color: #ffffff;
 }
 
-// .head-cont {
-//     margin: 0 auto;
-//     border-radius: 3px;
-//     padding: 10px 30px;
-//     background-color: white;
-//     font-size: 1.25rem;
-//     font-weight: bold;
-//     margin-top: 20vh;
-//     width: 30%;
-//     color: $blue0;
-// }
+
 
 navbar {
     .logo {
@@ -249,76 +239,6 @@ navbar {
     }
 }
 
-// .main-cont {
-//     margin: 0 auto;
-//     margin-top: 10px;
-//     background-color: $white;
-//     width: 30%;
-//     border-radius: 3px;
-//     padding: 30px 30px;
-
-//     .formcont {
-//         margin: 0 auto;
-//         text-align: center;
-//     }
-
-//     .inputtext {
-//         height: 40px;
-//         font-size: 1rem;
-//         padding: 4px 10px;
-//         &:focus {
-//             outline: none;
-//         }
-//         border: none;
-//         margin: 0 auto;
-//         width: 100%;
-//         color: $black;
-//         margin-bottom: 10px;
-//         border-radius: 2px;
-//     }
-
-//     .butt {
-//         margin-top: 10px;
-//         padding: 10px 20px;
-//         border: none;
-//         background-color: $blue0;
-//         color: white;
-//         font-size: 16px;
-//         border-radius: 2px;
-//         transition: background-color 0.5s;
-
-//         &:hover {
-//             background-color: $blue;
-//             cursor: pointer;
-//         }
-
-//         &:focus {
-//             outline: none;
-//         }
-//     }
-
-//     .butt2 {
-//         margin-top: 10px;
-//         padding: 10px 20px;
-//         border: none;
-//         background-color: white;
-//         color: $blue0;
-//         font-size: 16px;
-//         border-radius: 2px;
-//         margin-left: 10px;
-//         transition: background-color 0.5s;
-
-//         &:hover {
-//             color: $blue;
-//             cursor: pointer;
-//             opacity: 0.7;
-//         }
-
-//         &:focus {
-//             outline: none;
-//         }
-//     }
-// }
 
 .overlay{
     position: fixed;
@@ -453,7 +373,7 @@ navbar {
             margin: 0 auto;
             display: flex;
             margin-top: 50px;
-            width: 180px;
+            width: 260px;
             background-color: #ffffff;
             border-radius: 10px;
             padding: 10px;
@@ -467,6 +387,7 @@ navbar {
                 height: 40px;
                 width: 40px;
                 border-radius: 100px;
+                transition: background-color 0.3s;
                 &:hover {
                     cursor: pointer;
                     background-color: $black;
@@ -482,9 +403,46 @@ navbar {
                 height: 40px;
                 width: 40px;
                 border-radius: 100px;
+                transition: background-color 0.3s;
 
                 &:hover {
                     cursor: pointer;
+                    background-color: $black;
+                }
+            }
+
+            .screenshare {
+                background-color: #d8d8d8;
+                text-align: center;
+                margin-left: 10px;
+                color: $black;
+                padding: 10px;
+                height: 40px;
+                width: 40px;
+                border-radius: 100px;
+                transition: background-color 0.3s;
+                transition: color 0.3s;
+                &:hover {
+                    cursor: pointer;
+                    color: white;
+                    background-color: $black;
+                }
+            }
+
+            .board {
+                background-color: #d8d8d8;
+                text-align: center;
+                color: $black;
+                margin-left: 10px;
+                padding: 10px;
+                height: 40px;
+                width: 40px;
+                border-radius: 100px;
+                transition: background-color 0.3s;
+                transition: color 0.3s;
+                &:hover {
+                    cursor: pointer;
+                    color: white;
                     background-color: $black;
                 }
             }
@@ -498,6 +456,7 @@ navbar {
                 height: 40px;
                 width: 40px;
                 border-radius: 100px;
+                transition: background-color 0.3s;
 
                 &:hover {
                     cursor: pointer;

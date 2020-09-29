@@ -25,7 +25,7 @@ io.on('connect', socket => {
         socketname[socket.id] = username;
 
         
-        if (rooms[roomid]) {
+        if (rooms[roomid] && rooms[roomid].length>0) {
             rooms[roomid].push(socket.id);
             socket.to(roomid).emit('message', `${username} joined the room.`, 'Bot', moment().format(
                 "h:mm a"
@@ -69,8 +69,10 @@ io.on('connect', socket => {
         var index = rooms[socketroom[socket.id]].indexOf(socket.id);
         rooms[socketroom[socket.id]].splice(index, 1);
         io.to(socketroom[socket.id]).emit('user count', rooms[socketroom[socket.id]].length);
-        
         delete socketroom[socket.id];
+        console.log('--------------------');
+        console.log(rooms[socketroom[socket.id]]);
+        
         //toDo: push socket.id out of rooms
     });
 })

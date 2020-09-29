@@ -318,7 +318,7 @@ navbar .logo {
   margin: 0 auto;
   display: flex;
   margin-top: 50px;
-  width: 180px;
+  width: 260px;
   background-color: #ffffff;
   border-radius: 10px;
   padding: 10px;
@@ -332,6 +332,7 @@ navbar .logo {
   height: 40px;
   width: 40px;
   border-radius: 100px;
+  transition: background-color 0.3s;
 }
 .container-room .left-cont .utils .audio:hover {
   cursor: pointer;
@@ -346,9 +347,44 @@ navbar .logo {
   height: 40px;
   width: 40px;
   border-radius: 100px;
+  transition: background-color 0.3s;
 }
 .container-room .left-cont .utils .novideo:hover {
   cursor: pointer;
+  background-color: #393E46;
+}
+.container-room .left-cont .utils .screenshare {
+  background-color: #d8d8d8;
+  text-align: center;
+  margin-left: 10px;
+  color: #393E46;
+  padding: 10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 100px;
+  transition: background-color 0.3s;
+  transition: color 0.3s;
+}
+.container-room .left-cont .utils .screenshare:hover {
+  cursor: pointer;
+  color: white;
+  background-color: #393E46;
+}
+.container-room .left-cont .utils .board {
+  background-color: #d8d8d8;
+  text-align: center;
+  color: #393E46;
+  margin-left: 10px;
+  padding: 10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 100px;
+  transition: background-color 0.3s;
+  transition: color 0.3s;
+}
+.container-room .left-cont .utils .board:hover {
+  cursor: pointer;
+  color: white;
   background-color: #393E46;
 }
 .container-room .left-cont .utils .cutcall {
@@ -360,6 +396,7 @@ navbar .logo {
   height: 40px;
   width: 40px;
   border-radius: 100px;
+  transition: background-color 0.3s;
 }
 .container-room .left-cont .utils .cutcall:hover {
   cursor: pointer;
