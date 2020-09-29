@@ -2,8 +2,8 @@ $blue: #2980b9;
 $blue0: #3498db;
 $blue-1: #74b9ff;
 $white: #ecf0f1;
-$nicegreen: #4ECCA3;
-$black: #393E46;
+$nicegreen: #4ecca3;
+$black: #393e46;
 $spacemono: "Space Mono", monospace;
 $opensans: "Open Sans", sans-serif;
 
@@ -20,19 +20,19 @@ $opensans: "Open Sans", sans-serif;
     font-family: $opensans;
 }
 
-.mr-1{
+.mr-1 {
     margin-right: 10px;
 }
 
-.mr-2{
+.mr-2 {
     margin-right: 20px;
 }
 
-.mr-3{
+.mr-3 {
     margin-right: 30px;
 }
 
-.mr-4{
+.mr-4 {
     margin-right: 40px;
 }
 
@@ -51,8 +51,6 @@ img {
 body {
     background-color: #ffffff;
 }
-
-
 
 navbar {
     .logo {
@@ -153,7 +151,7 @@ navbar {
             }
         }
 
-        .roomcode-error{
+        .roomcode-error {
             border-bottom: 3px solid rgb(211, 28, 28);
         }
 
@@ -189,8 +187,8 @@ navbar {
             display: flex;
             margin-top: 10px;
             width: 100px;
-            
-            .device{
+
+            .device {
                 background-color: #4ecca3;
                 border-radius: 100px;
                 padding: 10px;
@@ -205,7 +203,7 @@ navbar {
                 }
             }
 
-            .nodevice{
+            .nodevice {
                 background-color: #b12c2c;
                 border-radius: 100px;
                 padding: 10px;
@@ -239,19 +237,18 @@ navbar {
     }
 }
 
-
-.overlay{
+.overlay {
     position: fixed;
     z-index: 5;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     bottom: 0;
-    right:0;
+    right: 0;
     height: 100%;
     width: 100%;
     background-color: $black;
 
-    .box{
+    .box {
         width: 25%;
         margin: 0 auto;
         height: 200px;
@@ -260,44 +257,44 @@ navbar {
         border-radius: 10px;
         text-align: center;
 
-        .head-name{
+        .head-name {
             padding-top: 20px;
             text-align: center;
             color: $black;
             font-weight: bold;
         }
 
-        .name-field{
+        .name-field {
             margin: 0px auto;
-            margin-top:20px;
-            border:0;
+            margin-top: 20px;
+            border: 0;
             font-weight: bold;
-            padding:10px;
-            width:90%;
+            padding: 10px;
+            width: 90%;
             border-bottom: 3px solid $nicegreen;
             color: $black;
-            height:40px;
+            height: 40px;
 
-            &:focus{
+            &:focus {
                 outline: none;
             }
         }
 
-        .continue-name{
+        .continue-name {
             border: none;
             margin: 0 auto;
             margin-top: 30px;
             color: #ffffff;
             font-weight: bold;
             background-color: $nicegreen;
-            padding:12px 20px;
+            padding: 12px 20px;
             border-radius: 10px;
             transition: opacity 0.5s;
-            &:hover{
+            &:hover {
                 opacity: 0.8;
                 cursor: pointer;
             }
-            &:focus{
+            &:focus {
                 outline: 0;
             }
         }
@@ -344,13 +341,31 @@ navbar {
             height: 75vh;
             // overflow-y: auto;
 
-            .video-dummy {
+            .video-box {
                 background-color: #353b48;
                 height: 100%;
                 min-height: 200px;
                 width: 100%;
-                object-fit: cover;
                 border-radius: 5px;
+                position: relative;
+
+                .video-frame {
+                    background-color: #353b48;
+                    height: 100%;
+                    min-height: 200px;
+                    width: 100%;
+                    object-fit: cover;
+                    border-radius: 5px;
+                }
+
+                .nametag {
+                    color: white;
+                    font-weight: bold;
+                    bottom: 10px;
+                    position: absolute;
+                    left:10px;
+                    bottom: 10px;
+                }
             }
         }
 
@@ -358,14 +373,34 @@ navbar {
             height: 75vh;
             // overflow-y: auto;
 
-            .video-dummy {
+            .video-box {
                 background-color: #353b48;
                 height: 100%;
                 min-height: 200px;
                 width: 100%;
-                object-fit: cover;
                 border-radius: 5px;
+                position: relative;
+
+                .video-frame {
+                    background-color: #353b48;
+                    height: 100%;
+                    min-height: 200px;
+                    width: 100%;
+                    object-fit: cover;
+                    border-radius: 5px;
+                }
+
+                .nametag {
+                    color: white;
+                    font-weight: bold;
+                    bottom: 10px;
+                    position: absolute;
+                    left:10px;
+                    bottom: 10px;
+                }
             }
+
+            
         }
 
         .utils {
@@ -448,7 +483,7 @@ navbar {
             }
 
             .cutcall {
-                background-color: #CC4E4E;
+                background-color: #cc4e4e;
                 text-align: center;
                 margin-left: 10px;
                 color: white;
@@ -468,7 +503,7 @@ navbar {
 
     .right-cont {
         width: 30%;
-        background-color: #FFFFFF;
+        background-color: #ffffff;
         height: 100vh;
 
         ::-webkit-scrollbar {
@@ -493,24 +528,24 @@ navbar {
         .head-title {
             font-weight: bold;
             color: $black;
-            background-color: #FFFFFF;
+            background-color: #ffffff;
             width: 100%;
             display: flex;
             border-bottom: 2px solid $black;
 
-            .chats, .attendies{
+            .chats,
+            .attendies {
                 padding: 10px;
                 padding-top: 20px;
                 width: 100%;
                 text-align: center;
                 transition: background-color 0.5s;
 
-                &:hover{
+                &:hover {
                     background-color: #f8f8f8;
                     cursor: pointer;
                 }
             }
-
         }
 
         .chat-cont {
@@ -543,7 +578,7 @@ navbar {
 
                 .content {
                     margin-top: 5px;
-                    font-size: 0.90rem;
+                    font-size: 0.9rem;
                 }
             }
         }
@@ -552,7 +587,7 @@ navbar {
             padding: 12px;
             display: flex;
             height: 60px;
-            background-color: #FFFFFF;
+            background-color: #ffffff;
             box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.15);
 
             .ci-cont {
@@ -569,16 +604,13 @@ navbar {
                 height: 36px;
                 font-size: 0.85rem;
                 padding: 4px 10px;
-                
+
                 &:focus {
                     outline: none;
-                   
                 }
-                border:none;
+                border: none;
                 border-bottom: 3px solid $nicegreen;
                 color: $black;
-
-
             }
 
             .chat-send {

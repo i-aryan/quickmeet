@@ -209,7 +209,7 @@ navbar .logo {
   right: 0;
   height: 100%;
   width: 100%;
-  background-color: #393E46;
+  background-color: #393e46;
 }
 .overlay .box {
   width: 25%;
@@ -223,7 +223,7 @@ navbar .logo {
 .overlay .box .head-name {
   padding-top: 20px;
   text-align: center;
-  color: #393E46;
+  color: #393e46;
   font-weight: bold;
 }
 .overlay .box .name-field {
@@ -233,8 +233,8 @@ navbar .logo {
   font-weight: bold;
   padding: 10px;
   width: 90%;
-  border-bottom: 3px solid #4ECCA3;
-  color: #393E46;
+  border-bottom: 3px solid #4ecca3;
+  color: #393e46;
   height: 40px;
 }
 .overlay .box .name-field:focus {
@@ -246,7 +246,7 @@ navbar .logo {
   margin-top: 30px;
   color: #ffffff;
   font-weight: bold;
-  background-color: #4ECCA3;
+  background-color: #4ecca3;
   padding: 12px 20px;
   border-radius: 10px;
   transition: opacity 0.5s;
@@ -283,7 +283,7 @@ navbar .logo {
 }
 .container-room .left-cont {
   width: 80%;
-  background-color: #393E46;
+  background-color: #393e46;
   height: 100vh;
   padding: 50px;
   text-align: center;
@@ -294,24 +294,56 @@ navbar .logo {
   grid-gap: 20px;
   height: 75vh;
 }
-.container-room .left-cont .video-cont .video-dummy {
+.container-room .left-cont .video-cont .video-box {
+  background-color: #353b48;
+  height: 100%;
+  min-height: 200px;
+  width: 100%;
+  border-radius: 5px;
+  position: relative;
+}
+.container-room .left-cont .video-cont .video-box .video-frame {
   background-color: #353b48;
   height: 100%;
   min-height: 200px;
   width: 100%;
   object-fit: cover;
   border-radius: 5px;
+}
+.container-room .left-cont .video-cont .video-box .nametag {
+  color: white;
+  font-weight: bold;
+  bottom: 10px;
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
 }
 .container-room .left-cont .video-cont-single {
   height: 75vh;
 }
-.container-room .left-cont .video-cont-single .video-dummy {
+.container-room .left-cont .video-cont-single .video-box {
+  background-color: #353b48;
+  height: 100%;
+  min-height: 200px;
+  width: 100%;
+  border-radius: 5px;
+  position: relative;
+}
+.container-room .left-cont .video-cont-single .video-box .video-frame {
   background-color: #353b48;
   height: 100%;
   min-height: 200px;
   width: 100%;
   object-fit: cover;
   border-radius: 5px;
+}
+.container-room .left-cont .video-cont-single .video-box .nametag {
+  color: white;
+  font-weight: bold;
+  bottom: 10px;
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
 }
 .container-room .left-cont .utils {
   text-align: center;
@@ -325,7 +357,7 @@ navbar .logo {
   justify-content: center;
 }
 .container-room .left-cont .utils .audio {
-  background-color: #4ECCA3;
+  background-color: #4ecca3;
   text-align: center;
   color: white;
   padding: 10px;
@@ -336,10 +368,10 @@ navbar .logo {
 }
 .container-room .left-cont .utils .audio:hover {
   cursor: pointer;
-  background-color: #393E46;
+  background-color: #393e46;
 }
 .container-room .left-cont .utils .novideo {
-  background-color: #4ECCA3;
+  background-color: #4ecca3;
   text-align: center;
   margin-left: 10px;
   color: white;
@@ -351,13 +383,13 @@ navbar .logo {
 }
 .container-room .left-cont .utils .novideo:hover {
   cursor: pointer;
-  background-color: #393E46;
+  background-color: #393e46;
 }
 .container-room .left-cont .utils .screenshare {
   background-color: #d8d8d8;
   text-align: center;
   margin-left: 10px;
-  color: #393E46;
+  color: #393e46;
   padding: 10px;
   height: 40px;
   width: 40px;
@@ -368,12 +400,12 @@ navbar .logo {
 .container-room .left-cont .utils .screenshare:hover {
   cursor: pointer;
   color: white;
-  background-color: #393E46;
+  background-color: #393e46;
 }
 .container-room .left-cont .utils .board {
   background-color: #d8d8d8;
   text-align: center;
-  color: #393E46;
+  color: #393e46;
   margin-left: 10px;
   padding: 10px;
   height: 40px;
@@ -385,10 +417,10 @@ navbar .logo {
 .container-room .left-cont .utils .board:hover {
   cursor: pointer;
   color: white;
-  background-color: #393E46;
+  background-color: #393e46;
 }
 .container-room .left-cont .utils .cutcall {
-  background-color: #CC4E4E;
+  background-color: #cc4e4e;
   text-align: center;
   margin-left: 10px;
   color: white;
@@ -400,11 +432,11 @@ navbar .logo {
 }
 .container-room .left-cont .utils .cutcall:hover {
   cursor: pointer;
-  background-color: #393E46;
+  background-color: #393e46;
 }
 .container-room .right-cont {
   width: 30%;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   height: 100vh;
   /* Track */
   /* Handle */
@@ -424,20 +456,22 @@ navbar .logo {
 }
 .container-room .right-cont .head-title {
   font-weight: bold;
-  color: #393E46;
-  background-color: #FFFFFF;
+  color: #393e46;
+  background-color: #ffffff;
   width: 100%;
   display: flex;
-  border-bottom: 2px solid #393E46;
+  border-bottom: 2px solid #393e46;
 }
-.container-room .right-cont .head-title .chats, .container-room .right-cont .head-title .attendies {
+.container-room .right-cont .head-title .chats,
+.container-room .right-cont .head-title .attendies {
   padding: 10px;
   padding-top: 20px;
   width: 100%;
   text-align: center;
   transition: background-color 0.5s;
 }
-.container-room .right-cont .head-title .chats:hover, .container-room .right-cont .head-title .attendies:hover {
+.container-room .right-cont .head-title .chats:hover,
+.container-room .right-cont .head-title .attendies:hover {
   background-color: #f8f8f8;
   cursor: pointer;
 }
@@ -462,7 +496,7 @@ navbar .logo {
 }
 .container-room .right-cont .chat-cont .message .info .username {
   font-weight: bold;
-  color: #4ECCA3;
+  color: #4ecca3;
 }
 .container-room .right-cont .chat-cont .message .info .time {
   margin-left: 12px;
@@ -475,7 +509,7 @@ navbar .logo {
   padding: 12px;
   display: flex;
   height: 60px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.15);
 }
 .container-room .right-cont .chat-input-cont .ci-cont {
@@ -491,8 +525,8 @@ navbar .logo {
   font-size: 0.85rem;
   padding: 4px 10px;
   border: none;
-  border-bottom: 3px solid #4ECCA3;
-  color: #393E46;
+  border-bottom: 3px solid #4ecca3;
+  color: #393e46;
 }
 .container-room .right-cont .chat-input-cont .chat-input:focus {
   outline: none;
@@ -502,7 +536,7 @@ navbar .logo {
   padding: 5px 20px;
   border: none;
   background-color: white;
-  color: #4ECCA3;
+  color: #4ecca3;
   font-weight: bold;
   font-size: 0.85rem;
   border-radius: 2px;

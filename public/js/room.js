@@ -10,13 +10,17 @@ const videoContainer = document.querySelector('#vcont');
 const overlayContainer = document.querySelector('#overlay')
 const continueButt = document.querySelector('.continue-name');
 const nameField = document.querySelector('#name-field');
+const videoButt = document.querySelector('.novideo');
+const audioButt = document.querySelector('.audio');
+let videoAllowed = 1;
+let audioAllowed = 1;
 
 const configuration = { iceServers: [{ urls: "stun:stun.stunprotocol.org" }] }
 
 const mediaConstraints = { video: true, audio: true };
 
 let connections = {};
-
+let cName = { 'dummy': 'object' };
 let audioTrackSent = {};
 let videoTrackSent = {};
 
@@ -26,6 +30,7 @@ continueButt.addEventListener('click', () => {
     if (nameField.value == '') return;
     username = nameField.value;
     overlayContainer.style.visibility = 'hidden';
+    document.querySelector("#myname").innerHTML = `${username}`;
     socket.emit("join room", roomid, username);
 
 })
@@ -100,10 +105,10 @@ function startCall() {
 
 }
 
-function handleVideoOffer(offer, sid) {
+function handleVideoOffer(offer, sid, cname) {
 
+    cName[sid] = cname;
     console.log('video offered recevied');
-
     //createPeerConnection();
     connections[sid] = new RTCPeerConnection(configuration);
 
@@ -118,13 +123,20 @@ function handleVideoOffer(offer, sid) {
 
         if (!document.getElementById(sid)) {
             console.log('track event fired')
+            let vidCont = document.createElement('div');
             let newvideo = document.createElement('video');
-            newvideo.id = sid;
-            newvideo.classList.add('video-dummy');
+            let name = document.createElement('div');
+            name.classList.add('nametag');
+            name.innerHTML = `${cName[sid]}`;
+            vidCont.id = sid;
+            vidCont.classList.add('video-box');
+            newvideo.classList.add('video-frame');
             newvideo.autoplay = true;
             newvideo.playsinline = true;
             newvideo.srcObject = event.streams[0];
-            videoContainer.appendChild(newvideo);
+            vidCont.appendChild(newvideo);
+            vidCont.appendChild(name);
+            videoContainer.appendChild(vidCont);
         }
         //video2.srcObject = event.streams[0];
 
@@ -201,7 +213,12 @@ socket.on('new icecandidate', handleNewIceCandidate);
 socket.on('video-answer', handleVideoAnswer);
 
 
-socket.on('join room', async (conc) => {
+socket.on('join room', async (conc, cnames) => {
+
+    if (cnames)
+        cName = cnames;
+
+    console.log(cName);
     if (conc) {
         await conc.forEach(sid => {
             connections[sid] = new RTCPeerConnection(configuration);
@@ -217,13 +234,20 @@ socket.on('join room', async (conc) => {
 
                 if (!document.getElementById(sid)) {
                     console.log('track event fired')
+                    let vidCont = document.createElement('div');
                     let newvideo = document.createElement('video');
-                    newvideo.id = sid;
-                    newvideo.classList.add('video-dummy');
+                    let name = document.createElement('div');
+                    name.classList.add('nametag');
+                    name.innerHTML = `${cName[sid]}`;
+                    vidCont.id = sid;
+                    vidCont.classList.add('video-box');
+                    newvideo.classList.add('video-frame');
                     newvideo.autoplay = true;
                     newvideo.playsinline = true;
                     newvideo.srcObject = event.streams[0];
-                    videoContainer.appendChild(newvideo);
+                    vidCont.appendChild(newvideo);
+                    vidCont.appendChild(name);
+                    videoContainer.appendChild(vidCont);
                 }
                 //video2.srcObject = event.streams[0];
 
@@ -306,11 +330,6 @@ socket.on('message', (msg, sendername, time) => {
 });
 
 //Code for utils
-const videoButt = document.querySelector('.novideo');
-const audioButt = document.querySelector('.audio');
-let videoAllowed = 1;
-let audioAllowed = 1;
-
 videoButt.addEventListener('click', () => {
     console.log('videotracks')
     console.log(videoTrackSent);
@@ -328,7 +347,7 @@ videoButt.addEventListener('click', () => {
         videoButt.innerHTML = `<i class="fas fa-video-slash"></i>`;
         videoAllowed = 0;
         videoButt.style.backgroundColor = "#b12c2c";
-        
+
         mystream.getTracks().forEach(track => {
             if (track.kind === 'video')
                 track.enabled = false;
