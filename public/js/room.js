@@ -437,7 +437,6 @@ messageField.addEventListener("keyup", function (event) {
 });
 
 socket.on('message', (msg, sendername, time) => {
-    chatRoom.scrollTop = chatRoom.scrollHeight * 2;
     chatRoom.innerHTML += `<div class="message">
     <div class="info">
         <div class="username">${sendername}</div>
@@ -447,6 +446,7 @@ socket.on('message', (msg, sendername, time) => {
         ${msg}
     </div>
 </div>`
+    chatRoom.scrollTo(0,document.body.scrollHeight);
 });
 
 //Code for utils
