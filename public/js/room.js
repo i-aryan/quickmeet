@@ -11,11 +11,17 @@ const continueButt = document.querySelector('.continue-name');
 const nameField = document.querySelector('#name-field');
 const videoButt = document.querySelector('.novideo');
 const audioButt = document.querySelector('.audio');
+const cutCall = document.querySelector('.cutcall');
+const screenShareButt = document.querySelector('.screenshare');
+
+
 let videoAllowed = 1;
 let audioAllowed = 1;
 
 let micInfo = {};
 let videoInfo = {};
+
+let videoTrackReceived = {};
 
 //hiding mute icon
 let mymuteicon = document.querySelector("#mymuteicon");
@@ -33,13 +39,13 @@ let cName = {};
 let audioTrackSent = {};
 let videoTrackSent = {};
 
-let mystream;
+let mystream, myscreenshare;
 
 continueButt.addEventListener('click', () => {
     if (nameField.value == '') return;
     username = nameField.value;
     overlayContainer.style.visibility = 'hidden';
-    document.querySelector("#myname").innerHTML = `${username}`;
+    document.querySelector("#myname").innerHTML = `${username} (You)`;
     socket.emit("join room", roomid, username);
 
 })
@@ -107,6 +113,14 @@ function startCall() {
                 }
             })
 
+            // if(myscreenshare){
+            //     myscreenshare.getTracks().forEach(track=>{
+            //         for (let key in connections) {
+            //             connections[key].addTrack(track, myscreenshare);
+            //         }
+            //     })
+            // }
+
 
         })
         .catch(handleGetUserMediaError);
@@ -118,8 +132,8 @@ function handleVideoOffer(offer, sid, cname, micinf, vidinf) {
 
     cName[sid] = cname;
     console.log('video offered recevied');
-    micInfo[sid]=micinf;
-    videoInfo[sid]=vidinf;
+    micInfo[sid] = micinf;
+    videoInfo[sid] = vidinf;
     //createPeerConnection();
     connections[sid] = new RTCPeerConnection(configuration);
 
@@ -152,6 +166,7 @@ function handleVideoOffer(offer, sid, cname, micinf, vidinf) {
             newvideo.classList.add('video-frame');
             newvideo.autoplay = true;
             newvideo.playsinline = true;
+            newvideo.id = `video${sid}`;
             newvideo.srcObject = event.streams[0];
 
             if (micInfo[sid] == 'on')
@@ -170,7 +185,18 @@ function handleVideoOffer(offer, sid, cname, micinf, vidinf) {
             vidCont.appendChild(videoOff);
 
             videoContainer.appendChild(vidCont);
+
         }
+
+        // if(videoTrackReceived){
+        //     if(event.track.kind == 'video'){
+        //         document.querySelector(`#video${sid}`).srcObject = event.streams[0];
+        //         console.log('screenshare src added to videobox');
+        //     }
+        // }
+
+        // if(event.track.kind == 'video')
+        //     videoTrackReceived[sid] = true;
         //video2.srcObject = event.streams[0];
 
     };
@@ -178,6 +204,7 @@ function handleVideoOffer(offer, sid, cname, micinf, vidinf) {
     connections[sid].onremovetrack = function (event) {
         if (document.getElementById(sid)) {
             document.getElementById(sid).remove();
+            console.log('removed a track');
         }
     };
 
@@ -216,6 +243,14 @@ function handleVideoOffer(offer, sid, cname, micinf, vidinf) {
                         videoTrackSent[sid].enabled = false
                 }
             })
+
+            // if (myscreenshare) {
+            //     myscreenshare.getTracks().forEach(track => {
+            //         connections[sid].addTrack(track, myscreenshare);
+            //         console.log('screenshared with new connected user');
+
+            //     })
+            // }
         })
         .then(() => {
             return connections[sid].createAnswer();
@@ -298,6 +333,7 @@ socket.on('join room', async (conc, cnames, micinfo, videoinfo) => {
                     newvideo.classList.add('video-frame');
                     newvideo.autoplay = true;
                     newvideo.playsinline = true;
+                    newvideo.id = `video${sid}`;
                     newvideo.srcObject = event.streams[0];
 
                     if (micInfo[sid] == 'on')
@@ -316,7 +352,23 @@ socket.on('join room', async (conc, cnames, micinfo, videoinfo) => {
                     vidCont.appendChild(videoOff);
 
                     videoContainer.appendChild(vidCont);
+
                 }
+
+                // if(videoTrackReceived){
+                //     if(event.track.kind == 'video'){
+                //         let ssStream =  new MediaStream()
+                //         document.querySelector(`#video${sid}`).srcObject = ssStream;
+                //         ssStream.addTrack(event.track);
+                //         console.log(event.track)
+                //         console.log('screenshare src added to videobox');
+                //     }
+                // }
+        
+                // if(event.track.kind == 'video'){
+                //     videoTrackReceived[sid] = true;
+                //     console.log('videoreceived');
+                // }
                 //video2.srcObject = event.streams[0];
 
             };
@@ -348,7 +400,7 @@ socket.on('join room', async (conc, cnames, micinfo, videoinfo) => {
 
     }
     else {
-        console.log('wait for someone to join');
+        console.log('waiting for someone to join');
         navigator.mediaDevices.getUserMedia(mediaConstraints)
             .then(localStream => {
                 myvideo.srcObject = localStream;
@@ -399,14 +451,14 @@ socket.on('message', (msg, sendername, time) => {
 
 //Code for utils
 videoButt.addEventListener('click', () => {
-    console.log('videotracks')
-    console.log(videoTrackSent);
+    // console.log('videotracks')
+    // console.log(videoTrackSent);
 
-    console.log('audiotracks');
-    console.log(audioTrackSent);
+    // console.log('audiotracks');
+    // console.log(audioTrackSent);
 
-    console.log('mystream');
-    console.log(mystream);
+    // console.log('mystream');
+    // console.log(mystream);
 
     if (videoAllowed) {
         for (let key in videoTrackSent) {
@@ -418,8 +470,10 @@ videoButt.addEventListener('click', () => {
 
         if (mystream) {
             mystream.getTracks().forEach(track => {
-                if (track.kind === 'video')
+                if (track.kind === 'video') {
                     track.enabled = false;
+                    // console.log(track);
+                }
             })
         }
 
@@ -515,6 +569,38 @@ socket.on('action', (msg, sid) => {
         document.querySelector(`#vidoff${sid}`).style.visibility = 'hidden';
         videoInfo[sid] = 'on';
     }
+})
+
+// screenShareButt.addEventListener('click', () => {
+//     const constraints = { video: true, audio: false };
+//     console.log('scrrenshare')
+//     if (!myscreenshare) {
+//         navigator.mediaDevices.getDisplayMedia(constraints)
+//         .then(localstream => {
+//             myvideo.srcObject = localstream;
+
+//             myscreenshare = localstream;
+
+//             console.log('screenshare track')
+//             localstream.getTracks().forEach(track => {
+//                 console.log(track);
+//                 for (let key in connections) {
+//                     connections[key].addTrack(track, localstream);
+//                 }
+//             })
+
+
+
+//         })
+//     }
+//     else{
+//         myscreenshare = null;
+//         myvideo.srcObject = mystream;
+//     }
+// })
+
+cutCall.addEventListener('click', () => {
+    location.href = '/';
 })
 
 
