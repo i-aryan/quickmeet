@@ -364,7 +364,7 @@ socket.on('join room', async (conc, cnames, micinfo, videoinfo) => {
                 //         console.log('screenshare src added to videobox');
                 //     }
                 // }
-        
+
                 // if(event.track.kind == 'video'){
                 //     videoTrackReceived[sid] = true;
                 //     console.log('videoreceived');
