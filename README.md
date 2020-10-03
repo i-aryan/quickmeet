@@ -14,3 +14,7 @@ A video chat/meeting webapp using WebRTC and WebSockets (socket.io). Basically a
 1. Screensharing
 2. Whiteboard
 4. Responsive front-end for Rooms
+
+## Contributions?
+
+I'm looking for any bug fixes as contributions but not any major feature additions as of now. 
