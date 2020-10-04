@@ -529,9 +529,11 @@ navbar {
                     bottom: 10px;
                     position: absolute;
                     font-weight: bold;
-                    left: 10px;
                     top: 40%;
-                    left: 45%;
+                    left: 0;
+                    right: 0;
+                    margin-left: auto;
+                    margin-right: auto;
                 }
 
                 .mute-icon {
@@ -579,9 +581,11 @@ navbar {
                     bottom: 10px;
                     font-weight: bold;
                     position: absolute;
-                    left: 10px;
                     top: 40%;
-                    left: 45%;
+                    left: 0;
+                    right: 0;
+                    margin-left: auto;
+                    margin-right: auto;
                 }
 
                 .mute-icon {
@@ -596,7 +600,6 @@ navbar {
         }
 
         .footer {
-            
             position: relative;
             .utils {
                 text-align: center;
@@ -695,15 +698,15 @@ navbar {
                 }
             }
 
-            .copycode-cont{
+            .copycode-cont {
                 position: absolute;
-                top:10px;
+                top: 10px;
                 left: 0;
                 display: flex;
-                
-                .roomcode{
+
+                .roomcode {
                     color: $nicegreen;
-                    padding:10px 20px;
+                    padding: 10px 20px;
                     background-color: white;
                     border-bottom: 3px solid $nicegreen;
                     font-weight: bold;
@@ -711,27 +714,26 @@ navbar {
                     border-bottom-left-radius: 5px;
                 }
 
-                .copycode-button{
+                .copycode-button {
                     padding: 10px 0;
                     width: 100px;
                     text-align: center;
                     color: white;
                     background-color: $nicegreen;
-                    border:none;
+                    border: none;
                     font-weight: bold;
                     outline: none;
                     border-top-right-radius: 5px;
                     border-bottom-right-radius: 5px;
-                    &:hover{
+                    &:hover {
                         cursor: pointer;
                     }
 
-                    &:focus{
+                    &:focus {
                         outline: none;
                     }
                 }
             }
-
         }
     }
 
