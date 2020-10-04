@@ -11,7 +11,7 @@ A video chat/meeting webapp using WebRTC and WebSockets (socket.io). Basically a
 
 1. Video Calls
 2. Chatbox
-3. Collabrotive Whiteboard
+3. Collaborative Whiteboard
 
 ## What is being coded right now?
 
