@@ -17,6 +17,7 @@ let socketroom = {};
 let socketname = {};
 let micSocket = {};
 let videoSocket = {};
+let roomBoard = {};
 
 io.on('connect', socket => {
 
@@ -73,6 +74,23 @@ io.on('connect', socket => {
         io.to(roomid).emit('message', msg, username, moment().format(
             "h:mm a"
         ));
+    })
+
+    socket.on('getCanvas', () => {
+        if (roomBoard[socketroom[socket.id]])
+            socket.emit('getCanvas', roomBoard[socketroom[socket.id]]);
+    });
+
+    socket.on('draw', (newx, newy, prevx, prevy, color, size) => {
+        socket.to(socketroom[socket.id]).emit('draw', newx, newy, prevx, prevy, color, size);
+    })
+
+    socket.on('clearBoard', () => {
+        socket.to(socketroom[socket.id]).emit('clearBoard');
+    });
+
+    socket.on('store canvas', url => {
+        roomBoard[socketroom[socket.id]] = url;
     })
 
     socket.on('disconnect', () => {

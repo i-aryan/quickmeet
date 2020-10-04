@@ -202,7 +202,7 @@ navbar .logo {
 }
 .overlay {
   position: fixed;
-  z-index: 5;
+  z-index: 100;
   top: 0;
   left: 0;
   bottom: 0;
@@ -287,6 +287,148 @@ navbar .logo {
   height: 100vh;
   padding: 50px;
   text-align: center;
+  position: relative;
+}
+.container-room .left-cont .whiteboard-cont {
+  height: 85vh;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 50px;
+  padding-bottom: 0;
+  min-height: 600px;
+}
+.container-room .left-cont .whiteboard-cont #whiteboard {
+  background-color: white;
+  border-radius: 10px;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont {
+  position: absolute;
+  right: 80px;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .black {
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  background-color: black;
+  margin-top: 10px;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .black:hover {
+  cursor: pointer;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .red {
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  background-color: #e74c3c;
+  margin-top: 10px;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .red:hover {
+  cursor: pointer;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .yellow {
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  background-color: #f1c40f;
+  margin-top: 10px;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .yellow:hover {
+  cursor: pointer;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .green {
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  background-color: #badc58;
+  margin-top: 10px;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .green:hover {
+  cursor: pointer;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .orange {
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  background-color: #e67e22;
+  margin-top: 10px;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .orange:hover {
+  cursor: pointer;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .purple {
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  background-color: #9b59b6;
+  margin-top: 10px;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .purple:hover {
+  cursor: pointer;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .blue {
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  background-color: #3498db;
+  margin-top: 10px;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .blue:hover {
+  cursor: pointer;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .pink {
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  background-color: #fd79a8;
+  margin-top: 10px;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .pink:hover {
+  cursor: pointer;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .brown {
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  background-color: #834c32;
+  margin-top: 10px;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .brown:hover {
+  cursor: pointer;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .grey {
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  background-color: gray;
+  margin-top: 10px;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .grey:hover {
+  cursor: pointer;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .eraser {
+  height: 30px;
+  width: 30px;
+  font-size: 26px;
+  margin-top: 10px;
+  color: #2b2b2b;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .eraser:hover {
+  cursor: pointer;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .clearboard {
+  height: 30px;
+  width: 30px;
+  font-size: 26px;
+  margin-top: 10px;
+  color: #2b2b2b;
+}
+.container-room .left-cont .whiteboard-cont .colors-cont .clearboard:hover {
+  cursor: pointer;
 }
 .container-room .left-cont .video-cont {
   display: grid;
@@ -377,7 +519,10 @@ navbar .logo {
   font-size: 20px;
   bottom: 10px;
 }
-.container-room .left-cont .utils {
+.container-room .left-cont .footer {
+  position: relative;
+}
+.container-room .left-cont .footer .utils {
   text-align: center;
   margin: 0 auto;
   display: flex;
@@ -388,7 +533,7 @@ navbar .logo {
   padding: 10px;
   justify-content: center;
 }
-.container-room .left-cont .utils .audio {
+.container-room .left-cont .footer .utils .audio {
   background-color: #4ecca3;
   text-align: center;
   color: white;
@@ -398,11 +543,11 @@ navbar .logo {
   border-radius: 100px;
   transition: background-color 0.3s;
 }
-.container-room .left-cont .utils .audio:hover {
+.container-room .left-cont .footer .utils .audio:hover {
   cursor: pointer;
   background-color: #393e46;
 }
-.container-room .left-cont .utils .novideo {
+.container-room .left-cont .footer .utils .novideo {
   background-color: #4ecca3;
   text-align: center;
   margin-left: 10px;
@@ -413,11 +558,11 @@ navbar .logo {
   border-radius: 100px;
   transition: background-color 0.3s;
 }
-.container-room .left-cont .utils .novideo:hover {
+.container-room .left-cont .footer .utils .novideo:hover {
   cursor: pointer;
   background-color: #393e46;
 }
-.container-room .left-cont .utils .screenshare {
+.container-room .left-cont .footer .utils .screenshare {
   background-color: #d8d8d8;
   text-align: center;
   margin-left: 10px;
@@ -429,12 +574,12 @@ navbar .logo {
   transition: background-color 0.3s;
   transition: color 0.3s;
 }
-.container-room .left-cont .utils .screenshare:hover {
+.container-room .left-cont .footer .utils .screenshare:hover {
   cursor: pointer;
   color: white;
   background-color: #393e46;
 }
-.container-room .left-cont .utils .board {
+.container-room .left-cont .footer .utils .board-icon {
   background-color: #d8d8d8;
   text-align: center;
   color: #393e46;
@@ -446,12 +591,12 @@ navbar .logo {
   transition: background-color 0.3s;
   transition: color 0.3s;
 }
-.container-room .left-cont .utils .board:hover {
+.container-room .left-cont .footer .utils .board-icon:hover {
   cursor: pointer;
   color: white;
   background-color: #393e46;
 }
-.container-room .left-cont .utils .cutcall {
+.container-room .left-cont .footer .utils .cutcall {
   background-color: #cc4e4e;
   text-align: center;
   margin-left: 10px;
@@ -462,9 +607,42 @@ navbar .logo {
   border-radius: 100px;
   transition: background-color 0.3s;
 }
-.container-room .left-cont .utils .cutcall:hover {
+.container-room .left-cont .footer .utils .cutcall:hover {
   cursor: pointer;
   background-color: #393e46;
+}
+.container-room .left-cont .footer .copycode-cont {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  display: flex;
+}
+.container-room .left-cont .footer .copycode-cont .roomcode {
+  color: #4ecca3;
+  padding: 10px 20px;
+  background-color: white;
+  border-bottom: 3px solid #4ecca3;
+  font-weight: bold;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.container-room .left-cont .footer .copycode-cont .copycode-button {
+  padding: 10px 0;
+  width: 100px;
+  text-align: center;
+  color: white;
+  background-color: #4ecca3;
+  border: none;
+  font-weight: bold;
+  outline: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.container-room .left-cont .footer .copycode-cont .copycode-button:hover {
+  cursor: pointer;
+}
+.container-room .left-cont .footer .copycode-cont .copycode-button:focus {
+  outline: none;
 }
 .container-room .right-cont {
   width: 30%;
@@ -581,6 +759,45 @@ navbar .logo {
 }
 .container-room .right-cont .chat-input-cont .chat-send:focus {
   outline: none;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #0f0f0f;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  font-size: 14px;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #0f0f0f transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 0.8;
 }
 
 /*# sourceMappingURL=style.css.map */

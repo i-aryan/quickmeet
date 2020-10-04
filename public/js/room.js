@@ -13,7 +13,130 @@ const videoButt = document.querySelector('.novideo');
 const audioButt = document.querySelector('.audio');
 const cutCall = document.querySelector('.cutcall');
 const screenShareButt = document.querySelector('.screenshare');
+const whiteboardButt = document.querySelector('.board-icon')
 
+//whiteboard js start
+const whiteboardCont = document.querySelector('.whiteboard-cont');
+const canvas = document.querySelector("#whiteboard");
+const ctx = canvas.getContext('2d');
+
+let boardVisisble = false;
+
+whiteboardCont.style.visibility = 'hidden';
+
+let isDrawing = 0;
+let x = 0;
+let y = 0;
+let color = "black";
+let drawsize = 3;
+let colorRemote = "black";
+let drawsizeRemote = 3;
+
+function fitToContainer(canvas) {
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+}
+
+fitToContainer(canvas);
+
+//getCanvas call is under join room call
+socket.on('getCanvas', url => {
+    let img = new Image();
+    img.onload = start;
+    img.src = url;
+
+    function start() {
+        ctx.drawImage(img, 0, 0);
+    }
+
+    console.log('got canvas', url)
+})
+
+function setColor(newcolor) {
+    color = newcolor;
+    drawsize = 3;
+}
+
+function setEraser() {
+    color = "white";
+    drawsize = 10;
+}
+
+//might remove this
+function reportWindowSize() {
+    fitToContainer(canvas);
+}
+
+window.onresize = reportWindowSize;
+//
+
+function clearBoard() {
+    if (window.confirm('Are you sure you want to clear board? This cannot be undone')) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        socket.emit('store canvas', canvas.toDataURL());
+        socket.emit('clearBoard');
+    }
+    else return;
+}
+
+socket.on('clearBoard', () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+})
+
+function draw(newx, newy, oldx, oldy) {
+    ctx.strokeStyle = color;
+    ctx.lineWidth = drawsize;
+    ctx.beginPath();
+    ctx.moveTo(oldx, oldy);
+    ctx.lineTo(newx, newy);
+    ctx.stroke();
+    ctx.closePath();
+
+    socket.emit('store canvas', canvas.toDataURL());
+
+}
+
+function drawRemote(newx, newy, oldx, oldy) {
+    ctx.strokeStyle = colorRemote;
+    ctx.lineWidth = drawsizeRemote;
+    ctx.beginPath();
+    ctx.moveTo(oldx, oldy);
+    ctx.lineTo(newx, newy);
+    ctx.stroke();
+    ctx.closePath();
+
+}
+
+canvas.addEventListener('mousedown', e => {
+    x = e.offsetX;
+    y = e.offsetY;
+    isDrawing = 1;
+})
+
+canvas.addEventListener('mousemove', e => {
+    if (isDrawing) {
+        draw(e.offsetX, e.offsetY, x, y);
+        socket.emit('draw', e.offsetX, e.offsetY, x, y, color, drawsize);
+        x = e.offsetX;
+        y = e.offsetY;
+    }
+})
+
+window.addEventListener('mouseup', e => {
+    if (isDrawing) {
+        isDrawing = 0;
+    }
+})
+
+socket.on('draw', (newX, newY, prevX, prevY, color, size) => {
+    colorRemote = color;
+    drawsizeRemote = size;
+    drawRemote(newX, newY, prevX, prevY);
+})
+
+//whiteboard js end
 
 let videoAllowed = 1;
 let audioAllowed = 1;
@@ -23,7 +146,6 @@ let videoInfo = {};
 
 let videoTrackReceived = {};
 
-//hiding mute icon
 let mymuteicon = document.querySelector("#mymuteicon");
 mymuteicon.style.visibility = 'hidden';
 
@@ -41,49 +163,36 @@ let videoTrackSent = {};
 
 let mystream, myscreenshare;
 
-let roomidtext= document.getElementById("roomidtext");
-roomidtext.innerHTML=`<span id="CopyMeID">${roomid}</span> <button onclick="CopyClassText()">Copy The Text</button>`
 
-function CopyClassText(){
-    //select the element with ID = "CopyMeID", can be a div, p, or a span, possibly others
-    var textToCopy = document.getElementById("CopyMeID");
+document.querySelector('.roomcode').innerHTML = `${roomid}`
 
-    //you can target the same element using querySelector() as well
-    //example below:
-    //var textToCopy = document.querySelector('.CopyMeClass');
+function CopyClassText() {
 
-    //check and see if the user had a text selection range
+    var textToCopy = document.querySelector('.roomcode');
     var currentRange;
-    if(document.getSelection().rangeCount > 0)
-    {
-         //the user has a text selection range, store it
-         currentRange = document.getSelection().getRangeAt(0);
-         //remove the current selection
-         window.getSelection().removeRange(currentRange);
+    if (document.getSelection().rangeCount > 0) {
+        currentRange = document.getSelection().getRangeAt(0);
+        window.getSelection().removeRange(currentRange);
     }
-    else
-    {
-         //they didn't have anything selected
-         currentRange = false;
+    else {
+        currentRange = false;
     }
 
-    //create a selection range
     var CopyRange = document.createRange();
-    //choose the element we want to select the text of
     CopyRange.selectNode(textToCopy);
-    //select the text inside the range
     window.getSelection().addRange(CopyRange);
-    //copy the text to the clipboard
     document.execCommand("copy");
 
-    //remove our selection range
     window.getSelection().removeRange(CopyRange);
 
-    //return the old selection range
-    if(currentRange)
-    {
+    if (currentRange) {
         window.getSelection().addRange(currentRange);
     }
+
+    document.querySelector(".copycode-button").textContent = "Copied!"
+    setTimeout(()=>{
+        document.querySelector(".copycode-button").textContent = "Copy Code";
+    }, 5000);
 }
 
 
@@ -97,11 +206,8 @@ continueButt.addEventListener('click', () => {
 })
 
 nameField.addEventListener("keyup", function (event) {
-    // Number 13 is the "Enter" key on the keyboard
     if (event.keyCode === 13) {
-        // Cancel the default action, if needed
         event.preventDefault();
-        // Trigger the button element with a click
         continueButt.click();
     }
 });
@@ -125,7 +231,6 @@ function handleGetUserMediaError(e) {
             break;
         case "SecurityError":
         case "PermissionDeniedError":
-            // Do nothing; this is the same as the user canceling the call.
             break;
         default:
             alert("Error opening your camera and/or microphone: " + e.message);
@@ -149,7 +254,6 @@ function startCall() {
             myvideo.muted = true;
 
             localStream.getTracks().forEach(track => {
-                // peerConnection.addTrack(track, localStream);
                 for (let key in connections) {
                     connections[key].addTrack(track, localStream);
                     if (track.kind === 'audio')
@@ -158,15 +262,6 @@ function startCall() {
                         videoTrackSent[key] = track;
                 }
             })
-
-            // if(myscreenshare){
-            //     myscreenshare.getTracks().forEach(track=>{
-            //         for (let key in connections) {
-            //             connections[key].addTrack(track, myscreenshare);
-            //         }
-            //     })
-            // }
-
 
         })
         .catch(handleGetUserMediaError);
@@ -180,7 +275,6 @@ function handleVideoOffer(offer, sid, cname, micinf, vidinf) {
     console.log('video offered recevied');
     micInfo[sid] = micinf;
     videoInfo[sid] = vidinf;
-    //createPeerConnection();
     connections[sid] = new RTCPeerConnection(configuration);
 
     connections[sid].onicecandidate = function (event) {
@@ -234,16 +328,6 @@ function handleVideoOffer(offer, sid, cname, micinf, vidinf) {
 
         }
 
-        // if(videoTrackReceived){
-        //     if(event.track.kind == 'video'){
-        //         document.querySelector(`#video${sid}`).srcObject = event.streams[0];
-        //         console.log('screenshare src added to videobox');
-        //     }
-        // }
-
-        // if(event.track.kind == 'video')
-        //     videoTrackReceived[sid] = true;
-        //video2.srcObject = event.streams[0];
 
     };
 
@@ -273,8 +357,7 @@ function handleVideoOffer(offer, sid, cname, micinf, vidinf) {
     connections[sid].setRemoteDescription(desc)
         .then(() => { return navigator.mediaDevices.getUserMedia(mediaConstraints) })
         .then((localStream) => {
-            // myvideo.srcObject = localStream;
-            // myvideo.muted = true;s
+
             localStream.getTracks().forEach(track => {
                 connections[sid].addTrack(track, localStream);
                 console.log('added local stream to peer')
@@ -290,13 +373,6 @@ function handleVideoOffer(offer, sid, cname, micinf, vidinf) {
                 }
             })
 
-            // if (myscreenshare) {
-            //     myscreenshare.getTracks().forEach(track => {
-            //         connections[sid].addTrack(track, myscreenshare);
-            //         console.log('screenshared with new connected user');
-
-            //     })
-            // }
         })
         .then(() => {
             return connections[sid].createAnswer();
@@ -334,7 +410,7 @@ socket.on('video-answer', handleVideoAnswer);
 
 
 socket.on('join room', async (conc, cnames, micinfo, videoinfo) => {
-
+    socket.emit('getCanvas');
     if (cnames)
         cName = cnames;
 
@@ -401,22 +477,6 @@ socket.on('join room', async (conc, cnames, micinfo, videoinfo) => {
 
                 }
 
-                // if(videoTrackReceived){
-                //     if(event.track.kind == 'video'){
-                //         let ssStream =  new MediaStream()
-                //         document.querySelector(`#video${sid}`).srcObject = ssStream;
-                //         ssStream.addTrack(event.track);
-                //         console.log(event.track)
-                //         console.log('screenshare src added to videobox');
-                //     }
-                // }
-
-                // if(event.track.kind == 'video'){
-                //     videoTrackReceived[sid] = true;
-                //     console.log('videoreceived');
-                // }
-                //video2.srcObject = event.streams[0];
-
             };
 
             connections[sid].onremovetrack = function (event) {
@@ -464,7 +524,6 @@ socket.on('remove peer', sid => {
 
     delete connections[sid];
 })
-//Code for Room Chats go here.
 
 sendButton.addEventListener('click', () => {
     const msg = messageField.value;
@@ -473,11 +532,8 @@ sendButton.addEventListener('click', () => {
 })
 
 messageField.addEventListener("keyup", function (event) {
-    // Number 13 is the "Enter" key on the keyboard
     if (event.keyCode === 13) {
-        // Cancel the default action, if needed
         event.preventDefault();
-        // Trigger the button element with a click
         sendButton.click();
     }
 });
@@ -495,16 +551,7 @@ socket.on('message', (msg, sendername, time) => {
 </div>`
 });
 
-//Code for utils
 videoButt.addEventListener('click', () => {
-    // console.log('videotracks')
-    // console.log(videoTrackSent);
-
-    // console.log('audiotracks');
-    // console.log(audioTrackSent);
-
-    // console.log('mystream');
-    // console.log(mystream);
 
     if (videoAllowed) {
         for (let key in videoTrackSent) {
@@ -518,7 +565,6 @@ videoButt.addEventListener('click', () => {
             mystream.getTracks().forEach(track => {
                 if (track.kind === 'video') {
                     track.enabled = false;
-                    // console.log(track);
                 }
             })
         }
@@ -550,11 +596,6 @@ videoButt.addEventListener('click', () => {
 
 
 audioButt.addEventListener('click', () => {
-    // console.log('videotracks')
-    // console.log(videoTrackSent);
-
-    // console.log('audiotracks');
-    // console.log(audioTrackSent);
 
     if (audioAllowed) {
         for (let key in audioTrackSent) {
@@ -617,36 +658,17 @@ socket.on('action', (msg, sid) => {
     }
 })
 
-// screenShareButt.addEventListener('click', () => {
-//     const constraints = { video: true, audio: false };
-//     console.log('scrrenshare')
-//     if (!myscreenshare) {
-//         navigator.mediaDevices.getDisplayMedia(constraints)
-//         .then(localstream => {
-//             myvideo.srcObject = localstream;
-
-//             myscreenshare = localstream;
-
-//             console.log('screenshare track')
-//             localstream.getTracks().forEach(track => {
-//                 console.log(track);
-//                 for (let key in connections) {
-//                     connections[key].addTrack(track, localstream);
-//                 }
-//             })
-
-
-
-//         })
-//     }
-//     else{
-//         myscreenshare = null;
-//         myvideo.srcObject = mystream;
-//     }
-// })
+whiteboardButt.addEventListener('click', () => {
+    if (boardVisisble) {
+        whiteboardCont.style.visibility = 'hidden';
+        boardVisisble = false;
+    }
+    else {
+        whiteboardCont.style.visibility = 'visible';
+        boardVisisble = true;
+    }
+})
 
 cutCall.addEventListener('click', () => {
     location.href = '/';
 })
-
-

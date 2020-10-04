@@ -239,7 +239,7 @@ navbar {
 
 .overlay {
     position: fixed;
-    z-index: 5;
+    z-index: 100;
     top: 0;
     left: 0;
     bottom: 0;
@@ -333,6 +333,164 @@ navbar {
         height: 100vh;
         padding: 50px;
         text-align: center;
+        position: relative;
+
+        .whiteboard-cont {
+            height: 85vh;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: 50px;
+            padding-bottom: 0;
+            min-height: 600px;
+
+            #whiteboard {
+                background-color: rgb(255, 255, 255);
+                border-radius: 10px;
+            }
+
+            .colors-cont {
+                position: absolute;
+                right: 80px;
+                top: 80px;
+                display: flex;
+                flex-direction: column;
+
+                .black {
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 50px;
+                    background-color: black;
+                    margin-top: 10px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                .red {
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 50px;
+                    background-color: #e74c3c;
+                    margin-top: 10px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                .yellow {
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 50px;
+                    background-color: #f1c40f;
+                    margin-top: 10px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                .green {
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 50px;
+                    background-color: #badc58;
+                    margin-top: 10px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                .orange {
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 50px;
+                    background-color: #e67e22;
+                    margin-top: 10px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                .purple {
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 50px;
+                    background-color: #9b59b6;
+                    margin-top: 10px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                .blue {
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 50px;
+                    background-color: #3498db;
+                    margin-top: 10px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                .pink {
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 50px;
+                    background-color: #fd79a8;
+                    margin-top: 10px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                .brown {
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 50px;
+                    background-color: #834c32;
+                    margin-top: 10px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                .grey {
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 50px;
+                    background-color: gray;
+                    margin-top: 10px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+                .eraser {
+                    height: 30px;
+                    width: 30px;
+                    font-size: 26px;
+                    margin-top: 10px;
+                    color: rgb(43, 43, 43);
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+                .clearboard {
+                    height: 30px;
+                    width: 30px;
+                    font-size: 26px;
+                    margin-top: 10px;
+                    color: rgb(43, 43, 43);
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
 
         .video-cont {
             display: grid;
@@ -362,7 +520,7 @@ navbar {
                     color: white;
                     bottom: 10px;
                     position: absolute;
-                    left:10px;
+                    left: 10px;
                     bottom: 10px;
                 }
 
@@ -371,17 +529,17 @@ navbar {
                     bottom: 10px;
                     position: absolute;
                     font-weight: bold;
-                    left:10px;
+                    left: 10px;
                     top: 40%;
-                    left:45%;
+                    left: 45%;
                 }
 
                 .mute-icon {
                     color: rgb(214, 52, 52);
                     bottom: 10px;
                     position: absolute;
-                    right:10px;
-                    font-size:20px;
+                    right: 10px;
+                    font-size: 20px;
                     bottom: 10px;
                 }
             }
@@ -412,7 +570,7 @@ navbar {
                     color: white;
                     bottom: 10px;
                     position: absolute;
-                    left:10px;
+                    left: 10px;
                     bottom: 10px;
                 }
 
@@ -421,119 +579,159 @@ navbar {
                     bottom: 10px;
                     font-weight: bold;
                     position: absolute;
-                    left:10px;
+                    left: 10px;
                     top: 40%;
-                    left:45%;
+                    left: 45%;
                 }
 
                 .mute-icon {
                     color: rgb(214, 52, 52);
                     bottom: 10px;
                     position: absolute;
-                    right:10px;
-                    font-size:20px;
+                    right: 10px;
+                    font-size: 20px;
                     bottom: 10px;
                 }
             }
-
-            
         }
 
-        .utils {
-            text-align: center;
-            margin: 0 auto;
-            display: flex;
-            margin-top: 50px;
-            width: 260px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            padding: 10px;
-            justify-content: center;
-
-            .audio {
-                background-color: $nicegreen;
+        .footer {
+            
+            position: relative;
+            .utils {
                 text-align: center;
-                color: white;
+                margin: 0 auto;
+                display: flex;
+                margin-top: 50px;
+                width: 260px;
+                background-color: #ffffff;
+                border-radius: 10px;
                 padding: 10px;
-                height: 40px;
-                width: 40px;
-                border-radius: 100px;
-                transition: background-color 0.3s;
-                &:hover {
-                    cursor: pointer;
-                    background-color: $black;
-                }
-            }
+                justify-content: center;
 
-            .novideo {
-                background-color: $nicegreen;
-                text-align: center;
-                margin-left: 10px;
-                color: white;
-                padding: 10px;
-                height: 40px;
-                width: 40px;
-                border-radius: 100px;
-                transition: background-color 0.3s;
-
-                &:hover {
-                    cursor: pointer;
-                    background-color: $black;
-                }
-            }
-
-            .screenshare {
-                background-color: #d8d8d8;
-                text-align: center;
-                margin-left: 10px;
-                color: $black;
-                padding: 10px;
-                height: 40px;
-                width: 40px;
-                border-radius: 100px;
-                transition: background-color 0.3s;
-                transition: color 0.3s;
-                &:hover {
-                    cursor: pointer;
+                .audio {
+                    background-color: $nicegreen;
+                    text-align: center;
                     color: white;
-                    background-color: $black;
+                    padding: 10px;
+                    height: 40px;
+                    width: 40px;
+                    border-radius: 100px;
+                    transition: background-color 0.3s;
+                    &:hover {
+                        cursor: pointer;
+                        background-color: $black;
+                    }
                 }
-            }
 
-            .board {
-                background-color: #d8d8d8;
-                text-align: center;
-                color: $black;
-                margin-left: 10px;
-                padding: 10px;
-                height: 40px;
-                width: 40px;
-                border-radius: 100px;
-                transition: background-color 0.3s;
-                transition: color 0.3s;
-                &:hover {
-                    cursor: pointer;
+                .novideo {
+                    background-color: $nicegreen;
+                    text-align: center;
+                    margin-left: 10px;
                     color: white;
-                    background-color: $black;
+                    padding: 10px;
+                    height: 40px;
+                    width: 40px;
+                    border-radius: 100px;
+                    transition: background-color 0.3s;
+
+                    &:hover {
+                        cursor: pointer;
+                        background-color: $black;
+                    }
+                }
+
+                .screenshare {
+                    background-color: #d8d8d8;
+                    text-align: center;
+                    margin-left: 10px;
+                    color: $black;
+                    padding: 10px;
+                    height: 40px;
+                    width: 40px;
+                    border-radius: 100px;
+                    transition: background-color 0.3s;
+                    transition: color 0.3s;
+                    &:hover {
+                        cursor: pointer;
+                        color: white;
+                        background-color: $black;
+                    }
+                }
+
+                .board-icon {
+                    background-color: #d8d8d8;
+                    text-align: center;
+                    color: $black;
+                    margin-left: 10px;
+                    padding: 10px;
+                    height: 40px;
+                    width: 40px;
+                    border-radius: 100px;
+                    transition: background-color 0.3s;
+                    transition: color 0.3s;
+                    &:hover {
+                        cursor: pointer;
+                        color: white;
+                        background-color: $black;
+                    }
+                }
+
+                .cutcall {
+                    background-color: #cc4e4e;
+                    text-align: center;
+                    margin-left: 10px;
+                    color: white;
+                    padding: 10px;
+                    height: 40px;
+                    width: 40px;
+                    border-radius: 100px;
+                    transition: background-color 0.3s;
+
+                    &:hover {
+                        cursor: pointer;
+                        background-color: $black;
+                    }
                 }
             }
 
-            .cutcall {
-                background-color: #cc4e4e;
-                text-align: center;
-                margin-left: 10px;
-                color: white;
-                padding: 10px;
-                height: 40px;
-                width: 40px;
-                border-radius: 100px;
-                transition: background-color 0.3s;
+            .copycode-cont{
+                position: absolute;
+                top:10px;
+                left: 0;
+                display: flex;
+                
+                .roomcode{
+                    color: $nicegreen;
+                    padding:10px 20px;
+                    background-color: white;
+                    border-bottom: 3px solid $nicegreen;
+                    font-weight: bold;
+                    border-top-left-radius: 5px;
+                    border-bottom-left-radius: 5px;
+                }
 
-                &:hover {
-                    cursor: pointer;
-                    background-color: $black;
+                .copycode-button{
+                    padding: 10px 0;
+                    width: 100px;
+                    text-align: center;
+                    color: white;
+                    background-color: $nicegreen;
+                    border:none;
+                    font-weight: bold;
+                    outline: none;
+                    border-top-right-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                    &:hover{
+                        cursor: pointer;
+                    }
+
+                    &:focus{
+                        outline: none;
+                    }
                 }
             }
+
         }
     }
 
@@ -672,4 +870,43 @@ navbar {
             }
         }
     }
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(15, 15, 15);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    font-size: 14px;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(15, 15, 15) transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 0.8;
 }
