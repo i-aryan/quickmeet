@@ -20,4 +20,4 @@ A video chat/meeting webapp using WebRTC and WebSockets (socket.io). Basically a
 
 ## Contributions?
 
-I'm looking for any bug fixes as contributions but not any major feature additions as of now. 
+Feel free to make a PR.
