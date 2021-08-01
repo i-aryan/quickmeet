@@ -1,5 +1,5 @@
 # quickmeet
-A video chat/meeting webapp using WebRTC and WebSockets (socket.io). Basically a Google Meet clone + a collaborative whiteboard. Demo: https://qmeet.herokuapp.com/
+A video chat/meeting webapp using WebRTC and WebSockets (socket.io). Basically a Google Meet clone + a collaborative whiteboard.
 <br><br>
 <img align="center" src="https://i.imgur.com/FxgApJU.jpg">
 
