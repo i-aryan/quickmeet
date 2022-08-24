@@ -16,6 +16,7 @@ A video chat/meeting webapp using WebRTC and WebSockets (socket.io). Basically a
 
 ## Upcoming Features?
 
+1. List of attendees
 2. Responsive front-end for Rooms
 
 ## Contributions?
