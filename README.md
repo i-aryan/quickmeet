@@ -1,24 +1,29 @@
-# quickmeet
+
+# SignCall
 A video chat/meeting webapp using WebRTC and WebSockets (socket.io). Basically a Google Meet clone + a collaborative whiteboard.
-<br><br>
-<img align="center" src="https://i.imgur.com/FxgApJU.jpg">
 
-<img align="center" src="https://i.imgur.com/tMAaFpF.jpg">
 
-<img align="center" src="https://i.imgur.com/YvvA08O.jpg">
+## Features
 
-## Current Features?
+- Video Calls
+- Chatbox
+- Collaborative Whiteboard
+- Screensharing
+- Responsive design
 
-1. Video Calls
-2. Chatbox
-3. Collaborative Whiteboard
-4. Screensharing
+## Demo
+https://signcall-webservice.onrender.com/
 
-## Upcoming Features?
+To view How website Look's Like click on the above link
+## Contributing
 
-1. List of attendees
-2. Responsive front-end for Rooms
+Contributions are welcome! If you have any suggestions, improvements, or bug fixes, please submit a pull request.
 
-## Contributions?
 
-Feel free to make a PR.
+## Screenshots
+
+![App Screenshot]()
+
+## Acknowledgements
+
+This project was created to provide an interactive and engaging quotes generator website for users. Special thanks to the developers and contributors who provided the quote API and resources for creating this website.
