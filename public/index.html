@@ -3,31 +3,56 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>QuickMeet - Video Call & Chat</title>
+    <title>SignCall</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://kit.fontawesome.com/6510466b6c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/7433d3320f.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
-    <navbar>
-        <div class="logo">QuickMeet</div>
-    </navbar>
-    <!-- <div class="landing"> -->
-        <!-- <div class="head-cont unselectable">
-            Welcome to QuickMeet!
-        </div> -->
-
-        <div class="main">
+        <header class="body-font">
+            <div class="container mx-auto d-flex flex-wrap p-4 flex-row justify-content-between align-items-center">
+              <a href="#" class="flex w-40">
+                <img width="60px" src="./images/logo.png" alt="logo" class="cursor-pointer">
+              </a>
+              <nav class="navbar navbar-expand-lg navbar-light">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav list-unstyled">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Solutions</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Plans &amp; Pricing</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Sales</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Resources</a>
+                  </li>
+                </ul>
+             
+            </nav>
+            </div>
+          </header>
+          
+          <div class="main">
             <div class="create-join">
                 <div class="text"><div class="head">Create Video Meetings in one-click.</div>
                 <div class="subtext">No sign ups required. Open Source platform.</div>
                 </div>
                 <button id="createroom" class="createroom-butt unselectable">Create Room</button><br>
-                <input type="text" name="room" spellcheck="false" placeholder="Enter Room Code" id="roomcode" class="roomcode"><br>
-                <div class="joinroom unselectable" id="joinroom">Join Room</div>
+                <input type="text" name="room" spellcheck="false" placeholder="Enter Room Code" id="roomcode" class="roomcod"><br>
+                <div class="joinroom unselectable " id="joinroom">Join Room</div>
             </div>
             <div class="video-cont">
                 <video class="video-self" autoplay muted playsinline></video>
@@ -36,23 +61,153 @@
                     <div class="device" id="webcam"><i class="fas fa-video"></i></div>
                 </div>
             </div>
+            </div>
+            
+        
+        <hr class="border border-1 mx-24">
+        <p class="text-center font-bold">See what you can do with Sign Meet</p>
+        <i class="fa-solid fa-angle-down text-center d-grid place-item-center margin"></i>
+    
+        <div class="container grids grid--2-cols grid--center-v ">
+         
+          <div class="step-text-box">
+            <h3 class="heading-tertiary">
+              Meet Safely
+            </h3>
+            <p class="step-description">
+              Meet uses the same protections that Sign uses to secure your information and safeguard your
+                        privacy. Meet video conferences are encrypted in transit, and our array of safety measures are
+                        continuously updated for added protection.
+            </p>
+          </div>
+    
+          <div class="step-img-box">
+            <img
+              src="./images/image2.webp"
+              alt="iphone app prefrences"
+              class="step-img"
+            />
+          </div>
+          
+          <div class="step-img-box">
+            <img
+              src="./images/image3.webp"
+              alt="iphone app prefrences"
+              class="step-img"
+            />
+          </div>
+    
+          <div class="step-text-box">
+            <h3 class="heading-tertiary">Meet from anywhere</h3>
+            <p class="step-description">
+              Get the whole crew together in Sign Meet, where you can present business proposals, collaborate on
+              chemistry assignments, or just catch up face to face. <br><br> Businesses, schools, and other
+              organizations can live stream meetings to 100,000 viewers within their domain.
+            </p>
+          </div>
+          
+          <div class="step-text-box">
+            <h3 class="heading-tertiary">Meet on any device</h3>
+            <p class="step-description">
+              Invited guests can join an online video conference from their computer using any modern web
+              browser—no software to install. On mobile devices, they can join from the Sign Meet app. Guests
+              can even join meetings from Sign Nest Hub Max.
+            </p>
+          </div>
+          <div class="step-img-box">
+            <img
+              src="./images/image4.webp"
+              alt="iphone app prefrences"
+              class="step-img"
+            />
+          </div>
+    
+          <div class="step-img-box">
+            <img
+              src="./images/image5.webp"
+              alt="iphone app prefrences"
+              class="step-img"
+            />
+          </div>
+    
+          <div class="step-text-box">
+            <h3 class="heading-tertiary">Meet clearly</h3>
+            <p class="step-description">
+              adjusts to your network speed, ensuring high quality video calls wherever you are. New AI
+                        enhancements keep your calls clear even when your surroundings aren’t.
+            </p>
+          </div>
+          
+          <div class="step-text-box">
+            <h3 class="heading-tertiary">Meet with everyone</h3>
+            <p class="step-description">
+              captions powered by Sign’s speech recognition technology, Sign Meet makes meetings more
+              accessible. For non-native speakers, hearing impaired participants, or just noisy ee shops, live
+              captions make it easy for everyone to follow along (available in English only).
+            </p>
+          </div>
+          <div class="step-img-box">
+            <img
+              src="./images/image6.webp"
+              alt="iphone app prefrences"
+              class="step-img"
+            />
+          </div>
         </div>
-
-        <!-- <div class="main-cont">
-
-            <form class="roomform" action="room.html" method="GET">
-                <div class="formcont">
-                    <input type="text" name="name" placeholder="Enter your name" id="username" class="inputtext"><br>
-                    
-                    <button type="submit" class="butt unselectable" id="joinroom">Join Room</button>
-                    
+        
+        <footer class="footer-48201">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4 pr-md-5">
+                <a href="#" class="footer-site-logo d-block mb-4">SignCall</a>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi quasi perferendis ratione perspiciatis accusantium.</p>
+              </div>
+              <div class="col-md">
+                <ul class="list-unstyled nav-links">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Meet</a></li>
+                  <li><a href="#">Services</a></li>
+                  <li><a href="#">Contact</a></li>
+                </ul>
+              </div>
+              <div class="col-md">
+                <ul class="list-unstyled nav-links">
+                  <li><a href="#">Clients</a></li>
+                  <li><a href="#">Team</a></li>
+                  <li><a href="#">Career</a></li>
+                  <li><a href="#">Testimonials</a></li>
+                  <li><a href="#">Journal</a></li>
+                </ul>
+              </div>
+              <div class="col-md">
+                <ul class="list-unstyled nav-links">
+                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">Terms &amp; Conditions</a></li>
+                  <li><a href="#">Partners</a></li>
+                </ul>
+              </div>
+              <div class="col-md text-md-center">
+                <ul class="social list-unstyled">
+                  <i class="fa-brands fa-instagram"></i>
+                  <i class="fa-brands fa-twitter"></i>
+                  <i class="fa-brands fa-facebook"></i>
+                </ul>
+                <p class=""><a href="#" class="btn btn-tertiary">Contact Us</a></p>
+              </div>
+            </div> 
+    
+            <div class="row ">
+              <div class="col-12 text-center">
+                <div class="copyright mt-5 pt-5">
+                  <p><small>&copy; 2019-2020 All Rights Reserved.</small></p>
                 </div>
-            </form>
-
-        </div> -->
-
-    <!-- </div> -->
-
+              </div>
+            </div> 
+          </div>
+          
+        </footer>
     <script src="js/landing.js"></script>
 </body>
 

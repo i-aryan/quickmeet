@@ -31,7 +31,7 @@ io.on('connect', socket => {
 
         if (rooms[roomid] && rooms[roomid].length > 0) {
             rooms[roomid].push(socket.id);
-            socket.to(roomid).emit('message', `${username} joined the room.`, 'Bot', moment().format(
+            socket.to(roomid).emit('message', `${username} joined the room.`, 'Sighny', moment().format(
                 "h:mm a"
             ));
             io.to(socket.id).emit('join room', rooms[roomid].filter(pid => pid != socket.id), socketname, micSocket, videoSocket);
@@ -95,7 +95,7 @@ io.on('connect', socket => {
 
     socket.on('disconnect', () => {
         if (!socketroom[socket.id]) return;
-        socket.to(socketroom[socket.id]).emit('message', `${socketname[socket.id]} left the chat.`, `Bot`, moment().format(
+        socket.to(socketroom[socket.id]).emit('message', `${socketname[socket.id]} left the chat.`, `Sighny`, moment().format(
             "h:mm a"
         ));
         socket.to(socketroom[socket.id]).emit('remove peer', socket.id);

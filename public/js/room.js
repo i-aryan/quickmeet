@@ -10,6 +10,7 @@ const overlayContainer = document.querySelector('#overlay')
 const continueButt = document.querySelector('.continue-name');
 const nameField = document.querySelector('#name-field');
 const videoButt = document.querySelector('.novideo');
+const chatMsg = document.querySelector('.chat-msg')
 const audioButt = document.querySelector('.audio');
 const cutCall = document.querySelector('.cutcall');
 const screenShareButt = document.querySelector('.screenshare');
@@ -24,6 +25,12 @@ let boardVisisble = false;
 
 whiteboardCont.style.visibility = 'hidden';
 
+function toggleChatContainer() {
+    var chatContainer = document.getElementById("chat-container");
+    chatContainer.style.display = chatContainer.style.display === "none" ? "block" : "none";
+  }
+
+  
 let isDrawing = 0;
 let x = 0;
 let y = 0;
@@ -164,7 +171,7 @@ let videoTrackSent = {};
 let mystream, myscreenshare;
 
 
-document.querySelector('.roomcode').innerHTML = `${roomid}`
+document.querySelector('.roomcode').innerHTML = `Your Room code is ${roomid } `
 
 function CopyClassText() {
 
@@ -188,8 +195,8 @@ function CopyClassText() {
     if (currentRange) {
         window.getSelection().addRange(currentRange);
     }
-
-    document.querySelector(".copycode-button").textContent = "Copied!"
+    alert(`Room code ${roomid} is successfully copied !`)
+    // document.querySelector(".copycode-button").textContent = "Copied!"
     setTimeout(()=>{
         document.querySelector(".copycode-button").textContent = "Copy Code";
     }, 5000);
