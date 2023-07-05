@@ -22,7 +22,12 @@ Contributions are welcome! If you have any suggestions, improvements, or bug fix
 
 ## Screenshots
 
-![App Screenshot]()
+![App Screenshot](https://github.com/RajatPetkar/quickmeet/blob/master/Saved%20Pictures/Screenshot%20(45).png)
+![App Screenshot](https://github.com/RajatPetkar/quickmeet/blob/master/Saved%20Pictures/Screenshot%20(46).png)
+![App Screenshot](https://github.com/RajatPetkar/quickmeet/blob/master/Saved%20Pictures/Screenshot%20(47).png)
+![App Screenshot](https://github.com/RajatPetkar/quickmeet/blob/master/Saved%20Pictures/Screenshot%20(48).png)
+![App Screenshot](https://github.com/RajatPetkar/quickmeet/blob/master/Saved%20Pictures/Screenshot%20(49).png)
+![App Screenshot](https://github.com/RajatPetkar/quickmeet/blob/master/Saved%20Pictures/Screenshot%20(50).png)
 
 ## Acknowledgements
 
